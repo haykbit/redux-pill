@@ -1,32 +1,21 @@
 import INITIAL_STATE from "./state";
+
 import {
-  INCREASE_COUNTER,
-  DECREASE_COUNTER,
-  RESET_COUNTER,
-  SET_COUNTER,
-  LOADING_COUNTER,
-  ERROR_COUNTER
+  GET_PROPIERTIES,
+  FAV_USER_PROPIERTIES,
+  FILTER_PROPIERTIES
 } from './types'
 
 const reducer =  (state = INITIAL_STATE, action) => {
   switch(action.type) {
-    case INCREASE_COUNTER: 
-      return { ...state, status: 'ok', value: state.value + action.payload };
+    case GET_PROPIERTIES: 
+      return { ...state, value: action.payload };
 
-    case DECREASE_COUNTER:
-      return { ...state, status: 'ok', value: state.value - action.payload };
+    case FAV_USER_PROPIERTIES:
+      return { ...state, value: action.payload };
     
-    case RESET_COUNTER:
-      return INITIAL_STATE;
-    
-    case SET_COUNTER:
-      return { ...state, status: 'ok', value: action.payload };
-    
-    case LOADING_COUNTER:
-      return { ...state, status: 'loading' };
-
-    case ERROR_COUNTER:
-      return { ...state, status: 'error' };
+    case FILTER_PROPIERTIES:
+      return { ...state, value: action.payload };
 
     default: 
       return state;
