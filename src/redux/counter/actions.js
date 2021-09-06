@@ -9,14 +9,13 @@ import {
 export const getPropierties = () => {
   return async (dispatch) => {
     try {
-      const apiResult = await $.ajax({
+      await $.ajax({
         url: "http://localhost:3000/properties", 
         type: "GET",
         success: (res) => {
-          console.log(res);
+          dispatch({ type: GET_PROPIERTIES, payload: res })
         } 
       });
-      dispatch({ type: GET_PROPIERTIES, payload: apiResult })
     } catch (error) {
       console.log("Error");
     }
