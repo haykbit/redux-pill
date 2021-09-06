@@ -1,35 +1,43 @@
-import getRandom from '../../services/randomMock';
+import $ from "jquery"
 
 import {
-  INCREASE_COUNTER,
-  DECREASE_COUNTER,
-  RESET_COUNTER,
-  SET_COUNTER,
-  LOADING_COUNTER,
-  ERROR_COUNTER
+  GET_PROPIERTIES,
+  FAV_USER_PROPIERTIES,
+  FILTER_PROPIERTIES
 } from './types'
 
-export const increaseCounterByOne = () => (
+export const getPropierties = () => {
+  return async (dispatch) => {
+    try {
+      const apiResult = await $.ajax({
+        url: "http://localhost:3000/properties", 
+        type: "GET",
+        success: (res) => {
+          console.log(res);
+        } 
+      });
+      dispatch({ type: GET_PROPIERTIES, payload: apiResult })
+    } catch (error) {
+      console.log("Error");
+    }
+  }
+};
+
+export const userFavPropierties = () => (
   {
-    type: INCREASE_COUNTER,
-    payload: 1
+    type: FAV_USER_PROPIERTIES,
+    //payload: Ayax petition data
   }
 );
 
-export const decreaseCounterByOne = () => (
+export const filterPropierties = () => (
   {
-    type: DECREASE_COUNTER,
-    payload: 1
+    type: FILTER_PROPIERTIES,
+    //payload: Ayax petition data
   }
 );
 
-export const resetCounter = () => (
-  {
-    type: RESET_COUNTER,
-    payload: 1
-  }
-);
-
+/*
 export const setRandomCounter = (maxValue) => {
   return async (dispatch) => {
     dispatch({ type: LOADING_COUNTER })
@@ -41,3 +49,4 @@ export const setRandomCounter = (maxValue) => {
     }
   }
 }
+*/
