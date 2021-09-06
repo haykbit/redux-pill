@@ -26,7 +26,6 @@
 - All the code, including comments, needs to be written in English
 - You must use semantic HTML5 elements for all the contents of the application, main, section, form, input types, etc
 
-
 ## Repository
 
 First of all you must fork this project into your GitHub account.
@@ -50,7 +49,6 @@ To create a fork on GitHub is as easy as clicking the “fork” button on the r
 \* Redux Thunk
 
 \* LocalStorage
-
 
 ## Project delivery
 
