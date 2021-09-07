@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 export default makeStyles(() => ({
   root: {
     display: "flex",
-    minWidth: "146px",
+    minWidth: "234px",
     justifyContent: "center",
     flexDirection: "column",
   },
@@ -57,4 +57,20 @@ export default makeStyles(() => ({
     borderRadius: "3px !important",
     padding: "9px !important"
   },
+  price: {
+    backgroundColor: "#A6FFC1",
+    padding: "3px",
+    borderRadius: "5px"
+  },
+  iconItem: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    marginRight: "15px"
+  },
+  iconContainer: {
+    marginTop: "10px",
+    alignItems: "center"
+  }
 }));

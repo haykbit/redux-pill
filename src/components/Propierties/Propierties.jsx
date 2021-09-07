@@ -2,7 +2,9 @@ import { useDispatch, useSelector } from "react-redux";
 import {useEffect} from "react";
 import { Grid, Card, InputBase, CardActions, CardContent, Button, Typography, CardMedia, FormControl, Paper, ButtonBase, IconButton } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
-import MenuIcon from '@material-ui/icons/Menu';
+import KingBedIcon from '@material-ui/icons/KingBed';
+import BathtubIcon from '@material-ui/icons/Bathtub';
+import CropDinIcon from '@material-ui/icons/CropDin';
 import useStyles from "./style";
 
 import {
@@ -60,7 +62,7 @@ const CounterControls = () => {
         </Grid>
 
         <Grid container className={classes.listContainer}>
-          {state.value.map( ( {id, image, province, offer, street, type, description, price } ) => {
+          {state.value.map( ( {id, image, province, offer, street, type, description, price, room, bath, size } ) => {
             return (
               <Paper className={classes.paper}>
                 <Grid container spacing={2}>
@@ -85,9 +87,32 @@ const CounterControls = () => {
                     </Grid>
                   </Grid>
                   <Grid item>
-                    <Typography variant="subtitle1">190.000,00 €</Typography>
+                    <Typography variant="subtitle1" className={classes.price}>190.000,00 €</Typography>
                   </Grid>
                 </Grid>
+                <Grid container className={classes.iconContainer}>
+                  <Grid item className={classes.iconItem}>
+                    <Typography variant="body2" gutterBottom> 
+                      <KingBedIcon color="disabled"/> 
+                      <Grid item>{room}</Grid>
+                    </Typography>
+                  </Grid>
+                    
+                  <Grid item className={classes.iconItem}>
+                    <Typography variant="body2" gutterBottom>
+                      <BathtubIcon color="disabled"/> 
+                      <Grid item>{bath}</Grid>
+                    </Typography>
+                  </Grid>
+
+                  <Grid item className={classes.iconItem}>
+                    <Typography variant="body2" gutterBottom>                    
+                      <CropDinIcon color="disabled"/> 
+                      <Grid item>{size} m2</Grid>
+                    </Typography>
+                  </Grid>
+                </Grid>
+                
               </Paper>
             )
           })}
