@@ -6,6 +6,7 @@ import KingBedIcon from '@material-ui/icons/KingBed';
 import BathtubIcon from '@material-ui/icons/Bathtub';
 import CropDinIcon from '@material-ui/icons/CropDin';
 import useStyles from "./style";
+import InputText from "../search/searcherInput";
 
 import {
   getPropierties,
@@ -17,10 +18,10 @@ const CounterControls = () => {
   const dispatch = useDispatch();
   const classes = useStyles();
 
-  useEffect(()=>{
+  // useEffect(()=>{
    
-    HandleGetPropierties();
-  },[])
+  //   HandleGetPropierties();
+  // },[])
   const state = useSelector((state)=>state.data);
   //console.log(state);
   
@@ -41,18 +42,21 @@ const CounterControls = () => {
   }
   return (
     <>
+      
       <button onClick={HandleGetPropierties}>GET</button>
       <div className={classes.root}>
         <Grid container>
           <Grid item className={classes.inputItem}>
-            <InputBase
+            {/* <InputBase
               className={classes.input}
               placeholder="Piso Barcelona centro"
               inputProps={{ 'aria-label': 'search google maps' }}
-            />
-            <IconButton type="submit" className={classes.iconButton} aria-label="search">
-              <SearchIcon />
-            </IconButton>
+            /> */}
+            
+            <InputText />
+            
+            
+            
           </Grid>
         </Grid>
 
@@ -62,7 +66,7 @@ const CounterControls = () => {
         </Grid>
 
         <Grid container className={classes.listContainer}>
-        {state.value.map( ( {id, image, province, offer, street, type, description, price, room, bath, size } ) => {
+        {/* {state.value.map( ( {id, image, province, offer, street, type, description, price, room, bath, size } ) => {
             return (
               <Paper className={classes.paper}>
                 <Grid container spacing={2}>
@@ -115,7 +119,7 @@ const CounterControls = () => {
                 
               </Paper>
             )
-          })}
+          })} */}
         </Grid>
       </div>
       {/*<button onClick={HandleUserFavPropierties}>FAV</button>
