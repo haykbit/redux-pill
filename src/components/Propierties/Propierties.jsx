@@ -62,7 +62,7 @@ const CounterControls = () => {
         </Grid>
 
         <Grid container className={classes.listContainer}>
-          {state.value.map( ( {id, image, province, offer, street, type, description, price, room, bath, size } ) => {
+        {state.value.map( ( {id, image, province, offer, street, type, description, price, room, bath, size } ) => {
             return (
               <Paper className={classes.paper}>
                 <Grid container spacing={2}>
