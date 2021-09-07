@@ -23,19 +23,29 @@ export const getPropierties = () => {
   }
 };
 
-export const userFavPropierties = () => (
-  {
-    type: FAV_USER_PROPIERTIES,
-    //payload: Ayax petition data
-  }
-);
+// export const userFavPropierties = () => {
+//   {
+//     type: FAV_USER_PROPIERTIES,
+//     //payload: Ayax petition data
+//   }
+// };
 
-export const filterPropierties = () => (
-  {
-    type: FILTER_PROPIERTIES,
-    //payload: Ayax petition data
+export const filterPropierties = () => {
+  return async (dispatch) => {
+    try {
+      const apiResult = await $.ajax({
+        url: "http://localhost:3000/properties?price_gte=100000&price_lte=300000&room=5&bath=3&pet=true", 
+        type: "GET",
+        success: (res) => {
+          console.log(res);
+        } 
+      });
+      dispatch({ type: FILTER_PROPIERTIES, payload: apiResult })
+    } catch (error) {
+      console.log("Error");
+    }
   }
-);
+};
 
 /*
 export const setRandomCounter = (maxValue) => {

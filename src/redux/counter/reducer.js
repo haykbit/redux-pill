@@ -9,13 +9,13 @@ import {
 const reducer =  (state = INITIAL_STATE, action) => {
   switch(action.type) {
     case GET_PROPIERTIES: 
-      return { ...state, value: action.payload };
+      return {  value: action.payload };
 
     case FAV_USER_PROPIERTIES:
-      return { ...state, value: action.payload };
+      return {  value: action.payload };
     
     case FILTER_PROPIERTIES:
-      return { ...state, value: action.payload };
+      return {  value: action.payload };
 
     default: 
       return state;
