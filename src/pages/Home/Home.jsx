@@ -48,7 +48,7 @@ function Home() {
             <Toolbar>
               <Grid container className={classes.container}>
                 <Grid item className={classes.logo}>
-                  <NavLink exact to="/home">
+                  <NavLink exact to="/">
                     <img
                       src={logo}
                       alt="Houser Logo"
@@ -58,17 +58,17 @@ function Home() {
                   </NavLink>
                 </Grid>
                 <Grid item className={classes.link}>
-                  <NavLink exact to="/home" style={{ textDecoration: "none" }}>
+                  <NavLink exact to="/" style={{ textDecoration: "none" }}>
                     <Button className={classes.links} color="primary">
                       Link
                     </Button>
                   </NavLink>
-                  <NavLink exact to="/home" style={{ textDecoration: "none" }}>
+                  <NavLink exact to="/" style={{ textDecoration: "none" }}>
                     <Button className={classes.links} color="primary">
                       Home
                     </Button>
                   </NavLink>
-                  <NavLink exact to="/home" style={{ textDecoration: "none" }}>
+                  <NavLink exact to="/" style={{ textDecoration: "none" }}>
                     <Button className={classes.links} color="primary">
                       Services
                     </Button>
@@ -97,45 +97,54 @@ function Home() {
           <Grid item className={classes.topSection}>
             <Grid item className={classes.text}>
               <Typography gutterBottom variant="h3">
-                Lorem ipsum verde est nula mente cuanti tanti fungui non sapiamo
+                There are many houses, but without you there could never be a
+                home
               </Typography>
               <br></br>
               <Typography variant="h5" gutterBottom>
-                No sapiamo cuanti pero tardi o protni fariamo qui
+                Search and find your new nest
               </Typography>
             </Grid>
 
             <Grid item className={classes.search}>
-              
-                
-               <InputSearch />
-              
-              
+              <InputSearch />
             </Grid>
           </Grid>
 
           <Grid item className={classes.bottomSection}>
             <Grid Item className={classes.popular}>
-              <h1 className={classes.h1}>Buy</h1>
+              <Button
+                className={classes.offerButton}
+                variant="contained"
+                color="primary"
+              >
+                View sales
+              </Button>
               {state.value.length == 0 ? (
                 <p>No data</p>
               ) : (
                 <Grid Item className={classes.containerPop}>
                   <CardMedia
                     className={classes.item}
-                    image={state.value[0].image}
+                    image={state.value[2].image}
                     title="Contemplative Reptile"
                   />
                   <CardMedia
                     className={classes.item}
-                    image={state.value[1].image}
+                    image={state.value[3].image}
                     title="Contemplative Reptile"
                   />
                 </Grid>
               )}
             </Grid>
             <Grid Item className={classes.popular}>
-              <h1 className={classes.h1}>Rent</h1>
+              <Button
+                className={classes.offerButton}
+                variant="contained"
+                color="primary"
+              >
+                View rentals
+              </Button>
 
               {state.value.length == 0 ? (
                 <p>No data</p>

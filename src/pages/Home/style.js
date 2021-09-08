@@ -80,6 +80,8 @@ export default makeStyles(() => ({
     height:"150px",
     backgroundColor: "#FFFFFF",
     marginLeft: "0",
+    border: "3px solid #fff",
+    borderRadius: "5px",
     margin: "2%"
   },
   h1: {
@@ -94,5 +96,8 @@ export default makeStyles(() => ({
     width: "100%",
     display: "flex",
     justifyContent: "space-between"
-  }
+  },
+  offerButton: {
+
+  },
 }));

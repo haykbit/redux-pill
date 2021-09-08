@@ -54,7 +54,7 @@ export default function InputText() {
           onChange={handelChange}
           name="city"
           id="outlined-basic"
-          label="Where?"
+          label="Where you would like to live?"
           variant="outlined"
           className={classes.textSearch}
         />
@@ -66,14 +66,18 @@ export default function InputText() {
           <SearchIcon />
         </IconButton>
       </form>
-      <button
-        onClick={() => {
-          dispatch(getPropiertiesByCityName(citySearched));
-        }}
-        className={classes.button}
-      >
-        {citySearched}
-      </button>
+      {citySearched.length == 0 ? (
+        <p></p>
+      ) : (
+        <button
+          onClick={() => {
+            dispatch(getPropiertiesByCityName(citySearched));
+          }}
+          className={classes.button}
+        >
+          {citySearched}
+        </button>
+      )}
     </>
   );
 }

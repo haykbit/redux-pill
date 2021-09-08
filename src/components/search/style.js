@@ -10,7 +10,7 @@ export default makeStyles(() => ({
     width: "60%"
  },
  form: {
-     width: "90%"
+     width: "130%"
  },
  iconButton: {
     backgroundColor: "#FFDC00",
