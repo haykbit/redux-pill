@@ -20,10 +20,10 @@ const CounterControls = () => {
   
 
   const state = useSelector((state)=>state.data);
-  useEffect(()=>{
+  // useEffect(()=>{
    
-    //HandleGetPropierties();
-  },[state])
+  //   //HandleGetPropierties();
+  // },[state])
   //console.log(state);
   
   const HandleGetPropierties = () => {
@@ -65,9 +65,14 @@ const CounterControls = () => {
           <Grid item className={classes.toolbar}>
           </Grid>
         </Grid>
-           <p>{state.value[0].contact_mail}</p> 
+        
+        
+      {state.value==0 ? (
+          
+      <p>{state.value}</p> 
+        ):(
         <Grid container className={classes.listContainer}>
-        {/* {state.value.map( ( {id, image, province, offer, street, type, description, price, room, bath, size } ) => {
+         {state.value.map( ( {id, image, province, offer, street, type, description, price, room, bath, size } ) => {
             return (
               <Paper className={classes.paper}>
                 <Grid container spacing={2}>
@@ -120,8 +125,9 @@ const CounterControls = () => {
                 
               </Paper>
             )
-          })} */}
+          })} 
         </Grid>
+            )}
       </div>
       {/*<button onClick={HandleUserFavPropierties}>FAV</button>
       <button onClick={HandleFilterPropierties}>FILTER</button>*/}

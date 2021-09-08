@@ -10,8 +10,10 @@ import {getPropiertiesByCityName} from '../../redux/counter/actions';
 
 export default function InputText(){
     const [inputValue, setInputValue] = useState("");
+     const [citySearched, setCitySearched] = useState("");
+     const [defalutCityValue, setDefalutCityValue] = useState("");
     const dispatch = useDispatch();
-    const state = useSelector((state)=>state.data);
+    // const state = useSelector((state)=>state.data);
     let cities=[];
     $.ajax({
         url:"http://localhost:3000/properties",
@@ -28,28 +30,34 @@ export default function InputText(){
     const classes = useStyles();
     const handelChange=(e)=>{
         setInputValue(e.target.value);
-         cities.map((city)=>{
+        cities.map((city)=>{
             Array.from(city).find((cityLeters)=>{
                 let letterMatch = cityLeters===e.target.value
                 
                 if(letterMatch===true)  {
-                        console.log(city) ;  
+                    setCitySearched(city) ;  
+                    // e.target.value=defalutCityValue
+                    
                 }
             })
         })
+        console.log(citySearched);
     }
 
     async function handlePropietiesByCity(e){
         e.preventDefault();
-       
+       console.log(defalutCityValue);
         dispatch(getPropiertiesByCityName(inputValue))
     }
 
     return (
+        <>
         
        <form onSubmit={handlePropietiesByCity}>
             <TextField 
+            
             defaultValue=""
+            placeholder={defalutCityValue}
             onChange={handelChange}
             name="city"
             id="outlined-basic" 
@@ -64,7 +72,17 @@ export default function InputText(){
             <SearchIcon />
             </IconButton>
         </form>
-       
+        
+        <ul>
+            <li>
+            <button   onClick={()=>{
+              
+                dispatch(getPropiertiesByCityName(citySearched))
+                }}>{citySearched}</button>
+            </li>
+        </ul>
+        
+       </>
     )
 }
 // className={classes.iconButton}
