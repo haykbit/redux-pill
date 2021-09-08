@@ -1,14 +1,22 @@
 import Propierties from './components/Propierties/Propierties';
+import Home from './pages/Home/Home';
 import ReduxProvider from './redux/Provider';
-// var cors = require('cors');
-
-// app.use(cors())
+import { Route, BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
-    <ReduxProvider>
-      <Propierties />
-    </ReduxProvider>
+    <BrowserRouter>
+      <ReduxProvider>
+        <Route path="/home" 
+        exact 
+        render={(routeProps) => <Home {...routeProps} />}
+        />
+        <Route path="/dashboard" 
+        exact 
+        render={(routeProps) => <Propierties {...routeProps} />}
+        />
+      </ReduxProvider>
+    </BrowserRouter>
   );
 }
 
