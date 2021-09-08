@@ -65,6 +65,23 @@ export const getPropiertiesByCityName = (city) => {
   }
 };
 
+export const getPropiertiesOffer = (offer) => {
+  return async (dispatch) => {
+    try {
+      const apiResult = await $.ajax({
+        url: `http://localhost:3000/properties?offer=${offer}`, 
+        type: "GET",
+        success: (res) => {
+          console.log(res);
+        } 
+      });
+      dispatch({ type: CITY_PROPIERTIES, payload: apiResult })
+    } catch (error) {
+      console.log("Error");
+    }
+  }
+};
+
 /*
 export const setRandomCounter = (maxValue) => {
   return async (dispatch) => {

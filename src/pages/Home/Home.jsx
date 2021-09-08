@@ -25,8 +25,12 @@ import background from "../../assets/back.jpg";
 import useStyles from "./style";
 import index from "./index.css";
 import InputSearch from "../../components/search/searcherInput";
+import Navbar from "../../components/Navbar/Navbar";
 
-import { getPropierties } from "../../redux/counter/actions";
+import {
+  getPropierties,
+  getPropiertiesOffer,
+} from "../../redux/counter/actions";
 
 function Home() {
   const classes = useStyles();
@@ -43,56 +47,7 @@ function Home() {
   return (
     <>
       <div className={classes.root}>
-        <Grid container>
-          <AppBar className={classes.navbar}>
-            <Toolbar>
-              <Grid container className={classes.container}>
-                <Grid item className={classes.logo}>
-                  <NavLink exact to="/">
-                    <img
-                      src={logo}
-                      alt="Houser Logo"
-                      height="45px"
-                      className={classes.image}
-                    />
-                  </NavLink>
-                </Grid>
-                <Grid item className={classes.link}>
-                  <NavLink exact to="/" style={{ textDecoration: "none" }}>
-                    <Button className={classes.links} color="primary">
-                      Link
-                    </Button>
-                  </NavLink>
-                  <NavLink exact to="/" style={{ textDecoration: "none" }}>
-                    <Button className={classes.links} color="primary">
-                      Home
-                    </Button>
-                  </NavLink>
-                  <NavLink exact to="/" style={{ textDecoration: "none" }}>
-                    <Button className={classes.links} color="primary">
-                      Services
-                    </Button>
-                  </NavLink>
-                  <NavLink
-                    exact
-                    to="/home"
-                    style={{ textDecoration: "none" }}
-                    className={classes.login}
-                  >
-                    <Button
-                      className={classes.links}
-                      variant="contained"
-                      color="primary"
-                    >
-                      Contact
-                    </Button>
-                  </NavLink>
-                </Grid>
-              </Grid>
-            </Toolbar>
-          </AppBar>
-        </Grid>
-
+        <Navbar />
         <Grid container className={classes.cover}>
           <Grid item className={classes.topSection}>
             <Grid item className={classes.text}>
@@ -113,13 +68,18 @@ function Home() {
 
           <Grid item className={classes.bottomSection}>
             <Grid Item className={classes.popular}>
-              <Button
-                className={classes.offerButton}
-                variant="contained"
-                color="primary"
-              >
-                View sales
-              </Button>
+              <NavLink exact to="/dashboard" style={{ textDecoration: "none" }}>
+                <Button
+                  className={classes.offerButton}
+                  variant="contained"
+                  color="primary"
+                  onClick={() => {
+                    dispatch(getPropiertiesOffer("Sell"));
+                  }}
+                >
+                  View sales
+                </Button>
+              </NavLink>
               {state.value.length == 0 ? (
                 <p>No data</p>
               ) : (
@@ -138,14 +98,18 @@ function Home() {
               )}
             </Grid>
             <Grid Item className={classes.popular}>
-              <Button
-                className={classes.offerButton}
-                variant="contained"
-                color="primary"
-              >
-                View rentals
-              </Button>
-
+              <NavLink exact to="/dashboard" style={{ textDecoration: "none" }}>
+                <Button
+                  className={classes.offerButton}
+                  variant="contained"
+                  color="primary"
+                  onClick={() => {
+                    dispatch(getPropiertiesOffer("Rent"));
+                  }}
+                >
+                  View rentals
+                </Button>
+              </NavLink>
               {state.value.length == 0 ? (
                 <p>No data</p>
               ) : (
