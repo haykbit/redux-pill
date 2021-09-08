@@ -7,7 +7,7 @@ export default makeStyles(() => ({
  textSearch:{
     backgroundColor: "#FFFFFF",
     borderRadius: "5px",
-    width: "60%"
+    width: "68%"
  },
  form: {
      width: "130%"

@@ -5,6 +5,7 @@ import $ from "jquery";
 import useStyles from "./style";
 import { useDispatch, useSelector } from "react-redux";
 import { getPropiertiesByCityName } from "../../redux/counter/actions";
+import { NavLink } from "react-router-dom";
 
 export default function InputText() {
   const [inputValue, setInputValue] = useState("");
@@ -58,25 +59,20 @@ export default function InputText() {
           variant="outlined"
           className={classes.textSearch}
         />
-        <IconButton
-          type="submit"
-          className={classes.iconButton}
-          aria-label="search"
-        >
-          <SearchIcon />
-        </IconButton>
       </form>
       {citySearched.length == 0 ? (
         <p></p>
       ) : (
-        <button
-          onClick={() => {
-            dispatch(getPropiertiesByCityName(citySearched));
-          }}
-          className={classes.button}
-        >
-          {citySearched}
-        </button>
+        <NavLink exact to="/dashboard" style={{ textDecoration: "none" }}>
+          <button
+            onClick={() => {
+              dispatch(getPropiertiesByCityName(citySearched));
+            }}
+            className={classes.button}
+          >
+            {citySearched}
+          </button>
+        </NavLink>
       )}
     </>
   );
