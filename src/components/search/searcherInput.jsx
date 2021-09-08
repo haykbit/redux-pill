@@ -1,56 +1,57 @@
 
 import { TextField, IconButton } from '@material-ui/core';
 import  SearchIcon  from '@material-ui/icons/Search';
-import { useState,useEffect} from 'react';
+import { useState } from 'react';
 import $ from "jquery";
 import useStyles from "./style";
-import { getPropierties } from '../../redux/counter/actions';
+import { useDispatch, useSelector } from "react-redux";
+import {getPropiertiesByCityName} from '../../redux/counter/actions';
+
 
 export default function InputText(){
+    const [inputValue, setInputValue] = useState("");
+    const dispatch = useDispatch();
+    const state = useSelector((state)=>state.data);
+    let cities=[];
+    $.ajax({
+        url:"http://localhost:3000/properties",
+        type:"GET",
+        success:(res)=>{
+            res.map((user)=>{
+                cities.push(user.city) ;
+            })
+        }
+    })
 
-//   useEffect(()=>{
-   
-// },[])
-// const dispatch = useDispatch();
 
-let cities=[];
-$.ajax({
-    url:"http://localhost:3000/properties",
-    type:"GET",
-    success:(res)=>{
-        res.map((user)=>{
-            cities.push(user.city) ;
-        })
-    }
-})
    
-     const classes = useStyles();
-     function handelChange(e){
-        
-         cities.forEach((city)=>{
-            Array.from(city).forEach((cityLeters)=>{
+    const classes = useStyles();
+    const handelChange=(e)=>{
+        setInputValue(e.target.value);
+         cities.map((city)=>{
+            Array.from(city).find((cityLeters)=>{
+                let letterMatch = cityLeters===e.target.value
                 
-                if(cityLeters===e.target.value){
-                    console.log(e.target.value) 
-                }else{
-                    console.log("not match") 
+                if(letterMatch===true)  {
+                        console.log(city) ;  
                 }
             })
-            //  const cityMatch = city.map((cityLeter)=>{
-                 
-            //      if(cityLeter===e.target.value){
-            //          return"match letter",cityLeter;
-            //         }
-            //     })
-            //     console.log(cityMatch);
         })
-     }
-    //  console.log(dataCityState);
+    }
+
+    async function handlePropietiesByCity(e){
+        e.preventDefault();
+       
+        dispatch(getPropiertiesByCityName(inputValue))
+    }
+
     return (
-       <form>
+        
+       <form onSubmit={handlePropietiesByCity}>
             <TextField 
-            value=""
+            defaultValue=""
             onChange={handelChange}
+            name="city"
             id="outlined-basic" 
             label="Where?" 
             variant="outlined" />
@@ -63,6 +64,7 @@ $.ajax({
             <SearchIcon />
             </IconButton>
         </form>
+       
     )
 }
 // className={classes.iconButton}

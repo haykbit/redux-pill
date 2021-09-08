@@ -1,5 +1,8 @@
 import Propierties from './components/Propierties/Propierties';
 import ReduxProvider from './redux/Provider';
+// var cors = require('cors');
+
+// app.use(cors())
 
 function App() {
   return (

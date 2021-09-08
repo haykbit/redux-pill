@@ -17,12 +17,13 @@ import {
 const CounterControls = () => {
   const dispatch = useDispatch();
   const classes = useStyles();
+  
 
-  // useEffect(()=>{
-   
-  //   HandleGetPropierties();
-  // },[])
   const state = useSelector((state)=>state.data);
+  useEffect(()=>{
+   
+    //HandleGetPropierties();
+  },[state])
   //console.log(state);
   
   const HandleGetPropierties = () => {
@@ -64,7 +65,7 @@ const CounterControls = () => {
           <Grid item className={classes.toolbar}>
           </Grid>
         </Grid>
-
+           <p>{state.value[0].contact_mail}</p> 
         <Grid container className={classes.listContainer}>
         {/* {state.value.map( ( {id, image, province, offer, street, type, description, price, room, bath, size } ) => {
             return (
