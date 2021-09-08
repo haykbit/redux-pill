@@ -47,7 +47,7 @@ export default makeStyles(() => ({
   search: {
     display: "flex",
     width: "50%",
-    alignItems: "center",
+    flexDirection: "column",
     justifyContent: "center",
     marginLeft: "5%"
   },
