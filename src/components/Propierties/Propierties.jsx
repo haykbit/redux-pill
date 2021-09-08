@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { RangeSlider } from '@ui5/webcomponents-react';
 import {
   Grid,
   Card,
@@ -20,6 +21,7 @@ import BathtubIcon from "@material-ui/icons/Bathtub";
 import CropDinIcon from "@material-ui/icons/CropDin";
 import useStyles from "./style";
 import InputText from "../search/searcherInput";
+import "./styles.css";
 
 import {
   getPropierties,
@@ -53,6 +55,13 @@ const CounterControls = () => {
   const HandleFilterPropierties = () => {
     dispatch(filterPropierties());
   };
+  const onChange = ( Ui5CustomEvent) =>{
+    const {currentTarget}=Ui5CustomEvent;
+    const {_state}=currentTarget
+
+   alert(_state.endValue);
+   alert( _state.startValue);
+  }
   return (
     
       
@@ -139,6 +148,17 @@ const CounterControls = () => {
           })} 
         </Grid>
             )}
+          <form className="filters_form"  >
+            <RangeSlider
+            endValue="5"
+            showTooltip="true"
+            max="300.000"
+            min="100.000"
+            step="4.000"
+            onChange={onChange}
+             />
+
+          </form>
       </div>
     
    
