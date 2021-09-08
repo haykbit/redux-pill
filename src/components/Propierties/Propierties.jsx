@@ -20,6 +20,7 @@ import BathtubIcon from "@material-ui/icons/Bathtub";
 import CropDinIcon from "@material-ui/icons/CropDin";
 import useStyles from "./style";
 import InputText from "../search/searcherInput";
+import Navbar from "../../components/Navbar/Navbar";
 
 import {
   getPropierties,
@@ -54,6 +55,7 @@ const CounterControls = () => {
   };
   return (
     <div className={classes.root}>
+      <Navbar />
       <Grid container>
         <Grid item className={classes.inputItem}>
           {/* <InputBase
@@ -103,8 +105,13 @@ const CounterControls = () => {
                     <Grid item xs={12} sm container>
                       <Grid item xs container direction="column" spacing={2}>
                         <Grid item xs>
-                          <Typography gutterBottom variant="subtitle1">
-                            {offer} {type} {province}
+                          <Typography
+                            gutterBottom
+                            variant="h5"
+                            className={classes.title}
+                          >
+                            <span className={classes.offer}>{offer}</span>{" "}
+                            {type} {province}
                           </Typography>
                           <Typography variant="body2" gutterBottom>
                             {description}
@@ -117,7 +124,7 @@ const CounterControls = () => {
                     </Grid>
                     <Grid item>
                       <Typography variant="subtitle1" className={classes.price}>
-                        {price}
+                        {price} €
                       </Typography>
                     </Grid>
                   </Grid>

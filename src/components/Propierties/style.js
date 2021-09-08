@@ -6,7 +6,8 @@ export default makeStyles(() => ({
     minWidth: "234px",
     justifyContent: "center",
     flexDirection: "column",
-    margin: "30px"
+    margin: "30px",
+    marginTop: "100px"
   },
   container: {
     display: "flex",
@@ -17,8 +18,8 @@ export default makeStyles(() => ({
     flexDirection: "row"
   },
   media: {
-    width: "200px",
-    height: "150px",
+    width: "270px",
+    height: "200px",
     borderRadius: "3px"
   },
   paper: {
@@ -37,7 +38,7 @@ export default makeStyles(() => ({
   },
   listContainer: {
       display: "flex",
-      flexDirection: "column",
+      flexDirection: "row",
       justifyContent: "center",
       alignItems: "center",
   },
@@ -58,10 +59,21 @@ export default makeStyles(() => ({
     borderRadius: "3px !important",
     padding: "9px !important"
   },
+  title: {
+    fontWeight: "bold",
+    marginBottom: "20px"
+  },
+  offer: {
+    padding: "1%",
+    color: "#fff",
+    backgroundColor: "#FF5151",
+    borderRadius: "5px"
+  },
   price: {
     backgroundColor: "#A6FFC1",
-    padding: "3px",
-    borderRadius: "5px"
+    padding: "5px 10px 5px 10px",
+    borderRadius: "5px",
+    fontWeight: "bold"
   },
   iconItem: {
     display: "flex",
