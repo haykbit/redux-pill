@@ -24,6 +24,7 @@ import logo from "../../assets/logo-2.jpg";
 import background from "../../assets/back.jpg";
 import useStyles from "./style";
 import index from "./index.css";
+import InputSearch from "../../components/search/searcherInput";
 
 import { getPropierties } from "../../redux/counter/actions";
 
@@ -105,25 +106,11 @@ function Home() {
             </Grid>
 
             <Grid item className={classes.search}>
-              <form
-                noValidate
-                autoComplete="off"
-                className={classes.searchForm}
-              >
-                <TextField
-                  id="outlined-basic"
-                  label="Search City"
-                  variant="outlined"
-                  className={classes.inputSearch}
-                />
-                <IconButton
-                  type="submit"
-                  className={classes.button}
-                  aria-label="search"
-                >
-                  <SearchIcon />
-                </IconButton>
-              </form>
+              
+                
+               <InputSearch />
+              
+              
             </Grid>
           </Grid>
 

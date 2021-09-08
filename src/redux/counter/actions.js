@@ -3,7 +3,8 @@ import $ from "jquery"
 import {
   GET_PROPIERTIES,
   FAV_USER_PROPIERTIES,
-  FILTER_PROPIERTIES
+  FILTER_PROPIERTIES,
+  CITY_PROPIERTIES
 } from './types'
 
 export const getPropierties = () => {
@@ -41,6 +42,23 @@ export const filterPropierties = () => {
         } 
       });
       dispatch({ type: FILTER_PROPIERTIES, payload: apiResult })
+    } catch (error) {
+      console.log("Error");
+    }
+  }
+};
+
+export const getPropiertiesByCityName = (city) => {
+  return async (dispatch) => {
+    try {
+      const apiResult = await $.ajax({
+        url: `http://localhost:3000/properties?city=${city}`, 
+        type: "GET",
+        success: (res) => {
+          console.log(res);
+        } 
+      });
+      dispatch({ type: CITY_PROPIERTIES, payload: apiResult })
     } catch (error) {
       console.log("Error");
     }
