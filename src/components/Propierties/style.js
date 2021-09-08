@@ -6,6 +6,7 @@ export default makeStyles(() => ({
     minWidth: "234px",
     justifyContent: "center",
     flexDirection: "column",
+    margin: "30px"
   },
   container: {
     display: "flex",
@@ -16,8 +17,8 @@ export default makeStyles(() => ({
     flexDirection: "row"
   },
   media: {
-    width: "140px",
-    height: "90px",
+    width: "200px",
+    height: "150px",
     borderRadius: "3px"
   },
   paper: {

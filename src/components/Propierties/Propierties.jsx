@@ -117,7 +117,7 @@ const CounterControls = () => {
                     </Grid>
                     <Grid item>
                       <Typography variant="subtitle1" className={classes.price}>
-                        190.000,00 €
+                        {price}
                       </Typography>
                     </Grid>
                   </Grid>

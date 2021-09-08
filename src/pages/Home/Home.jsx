@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import {
   Grid,
@@ -25,8 +26,19 @@ import useStyles from "./style";
 import index from "./index.css";
 import InputSearch from "../../components/search/searcherInput";
 
+import { getPropierties } from "../../redux/counter/actions";
+
 function Home() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPropierties());
+  }, []);
+
+  const state = useSelector((state) => state.data);
+
+  console.log(state);
 
   return (
     <>
@@ -105,18 +117,42 @@ function Home() {
           <Grid item className={classes.bottomSection}>
             <Grid Item className={classes.popular}>
               <h1 className={classes.h1}>Buy</h1>
-              <Grid Item className={classes.containerPop}>
-                <Grid Item className={classes.item}></Grid>
-                <Grid Item className={classes.item}></Grid>
-              </Grid>
+              {state.value.length == 0 ? (
+                <p>No data</p>
+              ) : (
+                <Grid Item className={classes.containerPop}>
+                  <CardMedia
+                    className={classes.item}
+                    image={state.value[0].image}
+                    title="Contemplative Reptile"
+                  />
+                  <CardMedia
+                    className={classes.item}
+                    image={state.value[1].image}
+                    title="Contemplative Reptile"
+                  />
+                </Grid>
+              )}
             </Grid>
-
             <Grid Item className={classes.popular}>
               <h1 className={classes.h1}>Rent</h1>
-              <Grid Item className={classes.containerPop}>
-                <Grid Item className={classes.item}></Grid>
-                <Grid Item className={classes.item}></Grid>
-              </Grid>
+
+              {state.value.length == 0 ? (
+                <p>No data</p>
+              ) : (
+                <Grid Item className={classes.containerPop}>
+                  <CardMedia
+                    className={classes.item}
+                    image={state.value[0].image}
+                    title="Contemplative Reptile"
+                  />
+                  <CardMedia
+                    className={classes.item}
+                    image={state.value[1].image}
+                    title="Contemplative Reptile"
+                  />
+                </Grid>
+              )}
             </Grid>
           </Grid>
         </Grid>
