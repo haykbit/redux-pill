@@ -1,0 +1,29 @@
+.filters_form{
+ 
+  padding:20%;
+}
+.typeHouse{
+  margin:5%;
+  display:grid;
+  grid-template-columns: 0.5fr 0.5fr;
+}
+.houseState{
+  margin:5%;
+  display:grid;
+  grid-template-columns: 0.5fr 0.5fr;
+}
+.bedrooms{
+  margin:5%;
+  display:grid;
+  grid-template-columns:0.25fr 0.25fr 0.25fr 0.25fr 0.25fr;
+}
+.bathrooms{
+  margin:5%;
+  display:grid;
+  grid-template-columns:0.25fr 0.25fr 0.25fr ;
+}
+.moreFilters{
+  margin:5%;
+  display:grid;
+  grid-template-columns: 0.5fr 0.5fr;
+}
