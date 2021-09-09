@@ -1,24 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import {
-  Grid,
-  Card,
-  InputBase,
-  CardActions,
-  CardContent,
-  Button,
-  Typography,
-  CardMedia,
-  FormControl,
-  Paper,
-  ButtonBase,
-  IconButton,
-} from "@material-ui/core";
-import SearchIcon from "@material-ui/icons/Search";
+import { NavLink, useHistory } from "react-router-dom";
+
+import { Grid, Button, Typography, Paper, ButtonBase } from "@material-ui/core";
 import KingBedIcon from "@material-ui/icons/KingBed";
 import BathtubIcon from "@material-ui/icons/Bathtub";
 import CropDinIcon from "@material-ui/icons/CropDin";
 import useStyles from "./style";
+
 import InputText from "../search/searcherInput";
 import Navbar from "../../components/Navbar/Navbar";
 
@@ -26,24 +15,23 @@ import {
   getPropierties,
   //userFavPropierties,
   filterPropierties,
+  resetPropierties,
 } from "../../redux/counter/actions";
 
 const CounterControls = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const classes = useStyles();
 
   const state = useSelector((state) => state.data);
   // useEffect(()=>{
-
-  //   //HandleGetPropierties();
+  //    HandleGetPropierties();
   // },[state])
-  //console.log(state);
 
   const HandleGetPropierties = () => {
-    dispatch(getPropierties());
-  };
-  const console = (state) => {
-    console.log(state);
+    //dispatch(getPropierties());
+    dispatch(resetPropierties());
+    history.push("/");
   };
 
   // const HandleUserFavPropierties = () => {
@@ -64,6 +52,13 @@ const CounterControls = () => {
 
       <Grid container className={classes.toolbarContainer}>
         <Grid item className={classes.toolbar}></Grid>
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={HandleGetPropierties}
+        >
+          Back
+        </Button>
       </Grid>
 
       {state.value == 0 ? (
@@ -126,14 +121,14 @@ const CounterControls = () => {
                     <Grid item className={classes.iconItem}>
                       <Typography variant="body2" gutterBottom>
                         <KingBedIcon color="disabled" />
-                        <Grid item>{room}</Grid>
+                        <Grid item>{room} Room</Grid>
                       </Typography>
                     </Grid>
 
                     <Grid item className={classes.iconItem}>
                       <Typography variant="body2" gutterBottom>
                         <BathtubIcon color="disabled" />
-                        <Grid item>{bath}</Grid>
+                        <Grid item>{bath} Bath</Grid>
                       </Typography>
                     </Grid>
 

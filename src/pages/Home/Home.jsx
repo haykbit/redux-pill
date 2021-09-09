@@ -1,29 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import {
-  Grid,
-  Card,
-  InputBase,
-  CardActions,
-  CardContent,
-  Button,
-  Typography,
-  CardMedia,
-  FormControl,
-  Paper,
-  ButtonBase,
-  IconButton,
-  AppBar,
-  TextField,
-  Toolbar,
-} from "@material-ui/core";
-import SearchIcon from "@material-ui/icons/Search";
 
-import logo from "../../assets/logo-2.jpg";
-import background from "../../assets/back.jpg";
+import { Grid, Button, Typography, CardMedia } from "@material-ui/core";
 import useStyles from "./style";
-import index from "./index.css";
 import InputSearch from "../../components/search/searcherInput";
 import Navbar from "../../components/Navbar/Navbar";
 
@@ -35,12 +15,16 @@ import {
 function Home() {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    console.log("useEffect");
     dispatch(getPropierties());
+    setIsLoaded(true);
   }, []);
 
   const state = useSelector((state) => state.data);
+  // Coger dos propiedades en venta y alquiler
 
   console.log(state);
 
@@ -80,6 +64,7 @@ function Home() {
                   View sales
                 </Button>
               </NavLink>
+
               {state.value.length == 0 ? (
                 <p>No data</p>
               ) : (
