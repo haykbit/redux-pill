@@ -58,12 +58,6 @@ const CounterControls = () => {
       <Navbar />
       <Grid container>
         <Grid item className={classes.inputItem}>
-          {/* <InputBase
-              className={classes.input}
-              placeholder="Piso Barcelona centro"
-              inputProps={{ 'aria-label': 'search google maps' }}
-            /> */}
-
           <InputText />
         </Grid>
       </Grid>
