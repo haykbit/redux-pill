@@ -22,7 +22,7 @@ export default makeStyles(() => ({
     padding: "2%",
     textAlign: "left",
     marginTop: "10px",
-    backgroundColor: "#fff",
+    backgroundColor: "#f3f3f3",
     "&:hover": {
       backgroundColor: "#e3e3e3",
       fontWeight: "bold",
