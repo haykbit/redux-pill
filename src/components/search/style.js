@@ -17,17 +17,18 @@ export default makeStyles(() => ({
     borderRadius: "5px",
     padding: "15px",
     marginTop: "1px",
-    marginLeft: "5px"
+    marginLeft: "5px",
  },
  button: {
     width: "40%",
     padding: "2%",
     textAlign: "left",
     marginTop: "10px",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#fff",
     '&:hover': {
-      backgroundColor: '#fff',
-      color: '#3c52b2',
+      backgroundColor: '#FFD500',
+      color: '#fff',
+      fontWeight: "bold"
     },
     border: "none",
     borderRadius: "3px",
