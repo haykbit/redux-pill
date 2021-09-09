@@ -1,29 +1,43 @@
 .filters_form{
- 
-  padding:20%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding:2%;
+  gap:2%;
+  row-gap: 20%;
 }
 .typeHouse{
   margin:5%;
   display:grid;
   grid-template-columns: 0.5fr 0.5fr;
+ font-size: 12px;
+ width: 100%;
 }
 .houseState{
   margin:5%;
   display:grid;
   grid-template-columns: 0.5fr 0.5fr;
+  font-size: 12px;
+  width: 100%;
+  
 }
 .bedrooms{
   margin:5%;
   display:grid;
   grid-template-columns:0.25fr 0.25fr 0.25fr 0.25fr 0.25fr;
+  font-size: 12px;
 }
 .bathrooms{
   margin:5%;
   display:grid;
   grid-template-columns:0.25fr 0.25fr 0.25fr ;
+  font-size: 12px;
 }
 .moreFilters{
   margin:5%;
   display:grid;
   grid-template-columns: 0.5fr 0.5fr;
+  font-size: 12px;
 }
+/* input{
+  margin-bottom: 20px;
+} */
