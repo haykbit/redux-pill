@@ -7,7 +7,7 @@ export default makeStyles(() => ({
     justifyContent: "center",
     flexDirection: "column",
     margin: "30px",
-    marginTop: "100px"
+    marginTop: "100px",
   },
   container: {
     display: "flex",
@@ -15,32 +15,33 @@ export default makeStyles(() => ({
   },
   info: {
     display: "flex",
-    flexDirection: "row"
+    flexDirection: "row",
   },
   media: {
     width: "270px",
     height: "200px",
-    borderRadius: "3px"
+    borderRadius: "3px",
   },
   paper: {
-      padding: "2%",
-      marginBottom: "20px",
-      width: "60%"
+    padding: "2%",
+    marginBottom: "20px",
+    width: "60%",
   },
   toolbarContainer: {
-      width: "100%"
+    width: "100%",
   },
-  toolbar:{
+  toolbar: {
     width: "100%",
     height: "200px",
     backgroundColor: "#e0e0e0",
-    marginBottom: "40px !important"
+    marginBottom: "40px !important",
+    marginTop: "20px",
   },
   listContainer: {
-      display: "flex",
-      flexDirection: "row",
-      justifyContent: "center",
-      alignItems: "center",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
   },
   input: {
     width: "80%",
@@ -48,42 +49,43 @@ export default makeStyles(() => ({
     marginBottom: "30px",
     flex: 1,
     padding: "5px",
-    backgroundColor: "#e0e0e0"
+    backgroundColor: "#e0e0e0",
   },
   inputItem: {
-    width: "50%"
+    width: "50%",
   },
   iconButton: {
     marginTop: "-4px !important",
     backgroundColor: "#FFDC00 !important",
     borderRadius: "3px !important",
-    padding: "9px !important"
+    padding: "9px !important",
   },
   title: {
     fontWeight: "bold",
-    marginBottom: "20px"
+    marginBottom: "20px",
   },
   offer: {
     padding: "1%",
     color: "#fff",
     backgroundColor: "#FF5151",
-    borderRadius: "5px"
+    borderRadius: "5px",
   },
   price: {
     backgroundColor: "#A6FFC1",
     padding: "5px 10px 5px 10px",
     borderRadius: "5px",
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
   iconItem: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    marginRight: "15px"
+    marginRight: "15px",
   },
   iconContainer: {
     marginTop: "10px",
-    alignItems: "center"
-  }
+    alignItems: "center",
+    textAlign: "center",
+  },
 }));

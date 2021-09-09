@@ -121,14 +121,14 @@ const CounterControls = () => {
                     <Grid item className={classes.iconItem}>
                       <Typography variant="body2" gutterBottom>
                         <KingBedIcon color="disabled" />
-                        <Grid item>{room}</Grid>
+                        <Grid item>{room} Room</Grid>
                       </Typography>
                     </Grid>
 
                     <Grid item className={classes.iconItem}>
                       <Typography variant="body2" gutterBottom>
                         <BathtubIcon color="disabled" />
-                        <Grid item>{bath}</Grid>
+                        <Grid item>{bath} Bath</Grid>
                       </Typography>
                     </Grid>
 
