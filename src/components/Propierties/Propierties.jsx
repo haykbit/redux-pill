@@ -35,6 +35,7 @@ const CounterControls = () => {
   
 
   const state = useSelector((state)=>state.reducer);
+  const stateFilters = useSelector((state)=>state.FilterReducer);
  
   // useEffect(()=>{
    
@@ -85,7 +86,25 @@ const CounterControls = () => {
       {state.value==0 ? (
           
       <p>{state.value}</p> 
-        ):(
+      ):(
+         <>
+         {stateFilters.value==0 ? (
+          <span>{stateFilters.value}</span> 
+         ):(
+           <>
+          <p>{stateFilters.value.typeHouse}</p> 
+          {/* <p>{stateFilters.value.bedroom}</p> 
+          <p>{stateFilters.value.bathrooms}</p> 
+          <p>{stateFilters.value.hose_State}</p> 
+          <p>{stateFilters.value.morefilters}</p> 
+          <p>{stateFilters.value.hours}</p> 
+          <p>{stateFilters.value.equipment}</p> 
+          <p>{`Maximum price: ${stateFilters.value.range[0]}`}</p> 
+          <p>{`Minim price: ${stateFilters.value.range[1]}`}</p>  */}
+          
+          </>
+         )
+         }
           
         <Grid container className={classes.listContainer}>
          {state.value.map( ( {id, image, province, offer, street, type, description, price, room, bath, size } ) => {
@@ -143,7 +162,7 @@ const CounterControls = () => {
             )
           })} 
         </Grid>
-      
+        </>
             )}
          <FilterForm />
       </div>

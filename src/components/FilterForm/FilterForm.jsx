@@ -14,6 +14,8 @@ export default function FilterForm(){
         set_filters({
             ...value,
             [e.target.name]:e.target.value,
+            
+
         })
        ) 
        
@@ -174,15 +176,27 @@ export default function FilterForm(){
 
             <div className="moreFilters">
                 <div>
-                    <input name="morefilters" type="checkbox" id="Needs_renovation"></input>
-                    <label for="Needs_renovation">Needs renovation</label>
+                    <input onChange={handleChange} name="petsAllowed" type="checkbox" id="pets_allowed"></input>
+                    <label for="pets_allowed">Needs renovation</label>
                 </div><div>
-                    <input name="morefilters" type="checkbox" id="New_house"></input>
-                    <label for="New_house">New House</label>
+                    <input onChange={handleChange} name="airConditioning" type="checkbox" id="air_conditioning"></input>
+                    <label for="air_conditioning">New House</label>
                 </div><div>
-                    <input name="morefilters" type="checkbox" id="Good_condition"></input>
+                    <input onChange={handleChange} name="terrace" type="checkbox" id="terrace"></input>
+                    <label for="terrace">Good condition</label>
+                </div><div>
+                    <input onChange={handleChange} name="swimingPool" type="checkbox" id="swiming_pool"></input>
                     <label for="Good_condition">Good condition</label>
-                </div>      
+                </div><div>
+                    <input onChange={handleChange} name="morefilters" type="checkbox" id="Good_condition"></input>
+                    <label for="Good_condition">Good condition</label>
+                </div><div>
+                    <input onChange={handleChange} name="garden" type="checkbox" id="garden"></input>
+                    <label for="garden">Good condition</label>
+                </div><div>
+                    <input onChange={handleChange} name="lift" type="checkbox" id="lift"></input>
+                    <label for="lift">Good condition</label>
+                </div>                       
             </div>
             <button type="submit">send</button>
       </form>
