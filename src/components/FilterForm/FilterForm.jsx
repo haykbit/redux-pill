@@ -1,15 +1,11 @@
 import { RangeSlider, Select, Option } from "@ui5/webcomponents-react";
 import "./styles.css";
-import { useEffect, useDebounce } from "react";
-import {
-  set_filters,
-  filterPropierties,
-  getPropiertiesByCityName,
-} from "../../redux/counter/actions";
+import { useEffect, useState } from "react";
+import { set_filters, filterPropierties } from "../../redux/counter/actions";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function FilterForm() {
-  // const [values, setValues] = useState(false);
+ const [doFilters, setdoFilters] = useState(false);
   const dispatch = useDispatch();
   const stateFilters = useSelector((state) => state.FilterReducer);
   const { value } = stateFilters;
@@ -24,15 +20,16 @@ export default function FilterForm() {
   const HandleFilterPropierties = () => {
     let filterQuery = `price_gte=${range[0]}&price_lte=${range[1]}&room=${bedroom}&bath=${bathrooms}&pet=${petsAllowed}`;
     dispatch(filterPropierties(filterQuery));
+    
   };
 
   useEffect(() => {
+      if(doFilters){
     HandleFilterPropierties();
+      }
   }, [stateFilters]);
 
-  useEffect(() => {
-    dispatch(getPropiertiesByCityName());
-  }, []);
+
 
   const handleChange = (e) => {
     dispatch(
@@ -41,6 +38,7 @@ export default function FilterForm() {
         [e.target.name]: e.target.value,
       })
     );
+    setdoFilters(true);
   };
 
   const handleChangeCheck = (e) => {
@@ -50,6 +48,7 @@ export default function FilterForm() {
         [e.target.name]: e.target.checked,
       })
     );
+    setdoFilters(true);
   };
 
   const onChangeRange = (Ui5CustomEvent) => {
@@ -61,6 +60,7 @@ export default function FilterForm() {
         range: [_state.startValue, _state.endValue],
       })
     );
+    setdoFilters(true);
   };
 
   const onChangeEquipment = (Ui5CustomEvent) => {
@@ -72,6 +72,7 @@ export default function FilterForm() {
         equipment: _state._text,
       })
     );
+    setdoFilters(true);
   };
 
   const onChangeHours = (Ui5CustomEvent) => {
