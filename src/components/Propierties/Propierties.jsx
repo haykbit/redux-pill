@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 
+
 import { Grid, Button, Typography, Paper, ButtonBase } from "@material-ui/core";
 import KingBedIcon from "@material-ui/icons/KingBed";
 import BathtubIcon from "@material-ui/icons/Bathtub";
