@@ -9,6 +9,7 @@ import {
   RESET_PROPIERTIES,
 } from "./types";
 
+
 export const getPropierties = () => {
   return async (dispatch) => {
     try {

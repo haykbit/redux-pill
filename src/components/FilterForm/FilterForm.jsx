@@ -1,22 +1,30 @@
 import { RangeSlider, Select, Option } from "@ui5/webcomponents-react";
 import "./styles.css";
-import { useState } from "react";
+import { useEffect, useDebounce } from "react";
 import { set_filters, filterPropierties } from "../../redux/counter/actions";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function FilterForm() {
-  // const [values, setValues] = useState({});
+  // const [values, setValues] = useState(false);
   const dispatch = useDispatch();
   const stateFilters = useSelector((state) => state.FilterReducer);
   const { value } = stateFilters;
 
   const { bedroom, bathrooms, range, petsAllowed } = value;
 
-  const HandleFilterPropierties = (e) => {
-    e.preventDefault();
-    let filterQuery = `price_gte=${range[0]}&price_lte=${range[1]}&room=${bedroom}&bath=${bathrooms}&pet=${petsAllowed}`;
-    dispatch(filterPropierties(filterQuery));
-  };
+// const [, cancel] = useDebounce(()=>
+// {HandleFilterPropierties()},
+// 2000,
+// [values]
+// );
+  const HandleFilterPropierties = () => {
+      let filterQuery = `price_gte=${range[0]}&price_lte=${range[1]}&room=${bedroom}&bath=${bathrooms}&pet=${petsAllowed}`;
+      dispatch(filterPropierties(filterQuery));
+    };
+
+    useEffect(()=>{
+        HandleFilterPropierties()
+    },[stateFilters]);
 
   const handleChange = (e) => {
     dispatch(
@@ -70,7 +78,7 @@ export default function FilterForm() {
   };
 
   return (
-    <form className="filters_form" onSubmit={HandleFilterPropierties}>
+    <form className="filters_form">
       <div className="typeHouse">
         <div>
           <input
@@ -329,7 +337,7 @@ export default function FilterForm() {
           <label for="lift">Lift</label>
         </div>
       </div>
-      <button type="submit">send</button>
+      {/* <button type="submit">send</button> */}
     </form>
   );
 }
