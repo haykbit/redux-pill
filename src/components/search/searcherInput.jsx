@@ -1,13 +1,14 @@
-import { TextField, IconButton, Button } from "@material-ui/core";
-import SearchIcon from "@material-ui/icons/Search";
-import RoomIcon from "@material-ui/icons/Room";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import $ from "jquery";
+
+import { TextField, IconButton, Button } from "@material-ui/core";
+import RoomIcon from "@material-ui/icons/Room";
 import { Autocomplete } from "@material-ui/lab";
 import useStyles from "./style";
-import { useDispatch, useSelector } from "react-redux";
+
 import { getPropiertiesByCityName } from "../../redux/counter/actions";
-import { NavLink } from "react-router-dom";
 
 export default function InputText() {
   const [inputValue, setInputValue] = useState("");
@@ -16,7 +17,6 @@ export default function InputText() {
   const dispatch = useDispatch();
   const classes = useStyles();
 
-  // const state = useSelector((state)=>state.data);
   let cities = [];
 
   $.ajax({

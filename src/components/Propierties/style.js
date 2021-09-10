@@ -37,7 +37,7 @@ export default makeStyles(() => ({
     marginTop: "20px",
   },
   back: {
-    marginTop: "7%",
+    marginTop: "10%",
   },
   noData: {
     width: "40%",
