@@ -2,7 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
-import { Grid, Button, Typography, CardMedia } from "@material-ui/core";
+import {
+  Grid,
+  Button,
+  Typography,
+  CardMedia,
+  CircularProgress,
+} from "@material-ui/core";
 import useStyles from "./style";
 import InputSearch from "../../components/search/searcherInput";
 import Navbar from "../../components/Navbar/Navbar";
@@ -63,7 +69,7 @@ function Home() {
               </NavLink>
 
               {state.value.length == 0 ? (
-                <p>No data</p>
+                <CircularProgress />
               ) : (
                 <Grid Item className={classes.containerPop}>
                   <CardMedia
@@ -93,7 +99,7 @@ function Home() {
                 </Button>
               </NavLink>
               {state.value.length == 0 ? (
-                <p>No data</p>
+                <CircularProgress />
               ) : (
                 <Grid Item className={classes.containerPop}>
                   <CardMedia

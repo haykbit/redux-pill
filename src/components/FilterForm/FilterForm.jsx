@@ -115,7 +115,8 @@ export default function FilterForm() {
       </div>
 
       <div className="bedrooms">
-        <label className="containerLarge">
+        <h3>Bedrooms</h3>
+        <label className="container">
           <input
             onChange={handleChange}
             value="0"
@@ -123,7 +124,7 @@ export default function FilterForm() {
             type="radio"
             id="studio"
           ></input>
-          <span className="checkmarkLarge"> 0, studio</span>
+          <span className="checkmark"> 0+</span>
         </label>
 
         <label className="container">
@@ -159,7 +160,7 @@ export default function FilterForm() {
           <span className="checkmark">3</span>
         </label>
 
-        <label className="containerLarge">
+        <label className="container">
           <input
             onChange={handleChange}
             value="4"
@@ -167,7 +168,7 @@ export default function FilterForm() {
             type="radio"
             id="forOrMoreBed"
           ></input>
-          <span className="checkmarkLarge"> 4 o +</span>
+          <span className="checkmark"> 4+</span>
         </label>
       </div>
 
@@ -197,7 +198,7 @@ export default function FilterForm() {
           </label>
         </div>
         <div>
-          <label className="containerLarge">
+          <label className="container">
             <input
               onChange={handleChange}
               value="3"
@@ -205,7 +206,7 @@ export default function FilterForm() {
               type="radio"
               id="threeOrMoreBath"
             ></input>
-            <span className="checkmarkLarge">3 o +</span>
+            <span className="checkmark">3+</span>
           </label>
         </div>
       </div>
@@ -329,7 +330,6 @@ export default function FilterForm() {
           <label for="lift">Lift</label>
         </div>
       </div>
-      <button type="submit">send</button>
     </form>
   );
 }

@@ -2,11 +2,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 
-import { Grid, Button, Typography, Paper, ButtonBase } from "@material-ui/core";
+import {
+  Grid,
+  Button,
+  Typography,
+  Paper,
+  ButtonBase,
+  CircularProgress,
+} from "@material-ui/core";
 import KingBedIcon from "@material-ui/icons/KingBed";
 import BathtubIcon from "@material-ui/icons/Bathtub";
 import CropDinIcon from "@material-ui/icons/CropDin";
 import useStyles from "./style";
+import gif from "../../assets/Ho.gif";
 
 import InputText from "../search/searcherInput";
 import FilterForm from "../FilterForm/FilterForm";
@@ -49,17 +57,22 @@ const CounterControls = () => {
           variant="contained"
           color="secondary"
           onClick={HandleGetPropierties}
+          className={classes.back}
         >
           Back
         </Button>
       </Grid>
 
       {state.value == 0 ? (
-        <p>{state.value}</p>
+        <div className={classes.noData}>
+          <h1>
+            Ups... There is not propierties with the filters that you choosed
+          </h1>
+        </div>
       ) : (
         <>
           {stateFilters.value == 0 ? (
-            <span>{stateFilters.value}</span>
+            <h1>No data colected</h1>
           ) : (
             <>
               <p>{stateFilters.value.typeHouse}</p>

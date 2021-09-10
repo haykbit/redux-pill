@@ -33,9 +33,16 @@ export default makeStyles(() => ({
   toolbar: {
     width: "100%",
     height: "200px",
-    backgroundColor: "#e0e0e0",
     marginBottom: "40px !important",
     marginTop: "20px",
+  },
+  back: {
+    marginTop: "7%",
+  },
+  noData: {
+    width: "40%",
+    textAlign: "center",
+    marginLeft: "30%",
   },
   listContainer: {
     display: "flex",
