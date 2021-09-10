@@ -1,23 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+
 import { Grid, Button, Typography, Paper, ButtonBase } from "@material-ui/core";
 import KingBedIcon from "@material-ui/icons/KingBed";
 import BathtubIcon from "@material-ui/icons/Bathtub";
 import CropDinIcon from "@material-ui/icons/CropDin";
 import useStyles from "./style";
-import gif from "../../assets/Ho.gif";
 
-import InputText from "../search/searcherInput";
+import InputText from "../Search/SearcherInput";
 import FilterForm from "../FilterForm/FilterForm";
 import Navbar from "../../components/Navbar/Navbar";
 
-import {
-  getPropierties,
-  //userFavPropierties,
-  filterPropierties,
-  resetPropierties,
-} from "../../redux/counter/actions";
+import { resetPropierties } from "../../redux/counter/actions";
 
 const CounterControls = () => {
   const dispatch = useDispatch();
@@ -66,17 +60,7 @@ const CounterControls = () => {
           {stateFilters.value == 0 ? (
             <h1>No data colected</h1>
           ) : (
-            <>
-              <p>{stateFilters.value.typeHouse}</p>
-              {/* <p>{stateFilters.value.bedroom}</p> 
-          <p>{stateFilters.value.bathrooms}</p> 
-          <p>{stateFilters.value.hose_State}</p> 
-          <p>{stateFilters.value.morefilters}</p> 
-          <p>{stateFilters.value.hours}</p> 
-          <p>{stateFilters.value.equipment}</p> 
-          <p>{`Maximum price: ${stateFilters.value.range[0]}`}</p> 
-          <p>{`Minim price: ${stateFilters.value.range[1]}`}</p>  */}
-            </>
+            <p>{stateFilters.value.typeHouse}</p>
           )}
 
           <Grid container className={classes.listContainer}>

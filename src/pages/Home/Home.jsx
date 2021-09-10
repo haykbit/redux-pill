@@ -10,7 +10,7 @@ import {
   CircularProgress,
 } from "@material-ui/core";
 import useStyles from "./style";
-import InputSearch from "../../components/search/searcherInput";
+import InputSearch from "../../components/Search/SearcherInput";
 import Navbar from "../../components/Navbar/Navbar";
 
 import {
@@ -27,9 +27,6 @@ function Home() {
   }, []);
 
   const state = useSelector((state) => state.reducer);
-  // Coger dos propiedades en venta y alquiler
-
-  console.log(state);
 
   return (
     <>
