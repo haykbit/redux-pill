@@ -1,4 +1,4 @@
-import INITIAL_STATE from "./state";
+import { INITIAL_STATE, INITIAL_FILTER_STATE } from "./state";
 
 import {
   GET_PROPIERTIES,
@@ -31,16 +31,14 @@ const reducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-const FilterReducer =  (state = INITIAL_STATE, action) => {
-  switch(action.type) {
-    
+const FilterReducer = (state = INITIAL_FILTER_STATE, action) => {
+  switch (action.type) {
     case SET_FILTERS:
-      return {  ...state, value: action.payload };  
-      
-    default: 
+      return { ...state, value: action.payload };
+
+    default:
       return state;
   }
-}
+};
 
-
-export  {reducer, FilterReducer };
+export { reducer, FilterReducer };
