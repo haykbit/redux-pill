@@ -24,27 +24,14 @@ const CounterControls = () => {
   const history = useHistory();
   const classes = useStyles();
 
-  const state = useSelector((state)=>state.reducer);
-  const stateFilters = useSelector((state)=>state.FilterReducer);
- 
-  // useEffect(()=>{
-  //    HandleGetPropierties();
-  // },[state])
+  const state = useSelector((state) => state.reducer);
+  const stateFilters = useSelector((state) => state.FilterReducer);
 
   const HandleGetPropierties = () => {
-    //dispatch(getPropierties());
     dispatch(resetPropierties());
     history.push("/");
   };
 
-  // const HandleUserFavPropierties = () => {
-  //   dispatch(userFavPropierties());
-  // }
-
-  const HandleFilterPropierties = () => {
-    dispatch(filterPropierties());
-  };
- 
   return (
     <div className={classes.root}>
       <Navbar />
@@ -54,29 +41,29 @@ const CounterControls = () => {
         </Grid>
       </Grid>
 
-        <Grid container className={classes.toolbarContainer}>
-          <Grid item className={classes.toolbar}></Grid>
-          <Button
+      <Grid container className={classes.toolbarContainer}>
+        <Grid item className={classes.toolbar}>
+          <FilterForm />
+        </Grid>
+        <Button
           variant="contained"
           color="secondary"
           onClick={HandleGetPropierties}
         >
           Back
         </Button>
-        </Grid>
-        
-        
-      {state.value==0 ? (
-          
-      <p>{state.value}</p> 
-      ):(
-         <>
-         {stateFilters.value==0 ? (
-          <span>{stateFilters.value}</span> 
-         ):(
-           <>
-          <p>{stateFilters.value.typeHouse}</p> 
-          {/* <p>{stateFilters.value.bedroom}</p> 
+      </Grid>
+
+      {state.value == 0 ? (
+        <p>{state.value}</p>
+      ) : (
+        <>
+          {stateFilters.value == 0 ? (
+            <span>{stateFilters.value}</span>
+          ) : (
+            <>
+              <p>{stateFilters.value.typeHouse}</p>
+              {/* <p>{stateFilters.value.bedroom}</p> 
           <p>{stateFilters.value.bathrooms}</p> 
           <p>{stateFilters.value.hose_State}</p> 
           <p>{stateFilters.value.morefilters}</p> 
@@ -84,97 +71,95 @@ const CounterControls = () => {
           <p>{stateFilters.value.equipment}</p> 
           <p>{`Maximum price: ${stateFilters.value.range[0]}`}</p> 
           <p>{`Minim price: ${stateFilters.value.range[1]}`}</p>  */}
-          
-          </>
-         )
-         }
-          
-        <Grid container className={classes.listContainer}>
-          {state.value.map(
-            ({
-              id,
-              image,
-              province,
-              offer,
-              street,
-              type,
-              description,
-              price,
-              room,
-              bath,
-              size,
-            }) => {
-              return (
-                <Paper className={classes.paper}>
-                  <Grid container spacing={2}>
-                    <Grid item>
-                      <ButtonBase className={classes.image}>
-                        <img
-                          className={classes.media}
-                          alt="complex"
-                          src={image}
-                        />
-                      </ButtonBase>
-                    </Grid>
-                    <Grid item xs={12} sm container>
-                      <Grid item xs container direction="column" spacing={2}>
-                        <Grid item xs>
-                          <Typography
-                            gutterBottom
-                            variant="h5"
-                            className={classes.title}
-                          >
-                            <span className={classes.offer}>{offer}</span>{" "}
-                            {type} {province}
-                          </Typography>
-                          <Typography variant="body2" gutterBottom>
-                            {description}
-                          </Typography>
-                          <Typography variant="body2" color="textSecondary">
-                            {street}
-                          </Typography>
+            </>
+          )}
+
+          <Grid container className={classes.listContainer}>
+            {state.value.map(
+              ({
+                id,
+                image,
+                province,
+                offer,
+                street,
+                type,
+                description,
+                price,
+                room,
+                bath,
+                size,
+              }) => {
+                return (
+                  <Paper className={classes.paper}>
+                    <Grid container spacing={2}>
+                      <Grid item>
+                        <ButtonBase className={classes.image}>
+                          <img
+                            className={classes.media}
+                            alt="complex"
+                            src={image}
+                          />
+                        </ButtonBase>
+                      </Grid>
+                      <Grid item xs={12} sm container>
+                        <Grid item xs container direction="column" spacing={2}>
+                          <Grid item xs>
+                            <Typography
+                              gutterBottom
+                              variant="h5"
+                              className={classes.title}
+                            >
+                              <span className={classes.offer}>{offer}</span>{" "}
+                              {type} {province}
+                            </Typography>
+                            <Typography variant="body2" gutterBottom>
+                              {description}
+                            </Typography>
+                            <Typography variant="body2" color="textSecondary">
+                              {street}
+                            </Typography>
+                          </Grid>
                         </Grid>
                       </Grid>
+                      <Grid item>
+                        <Typography
+                          variant="subtitle1"
+                          className={classes.price}
+                        >
+                          {price} €
+                        </Typography>
+                      </Grid>
                     </Grid>
-                    <Grid item>
-                      <Typography variant="subtitle1" className={classes.price}>
-                        {price} €
-                      </Typography>
-                    </Grid>
-                  </Grid>
-                  <Grid container className={classes.iconContainer}>
-                    <Grid item className={classes.iconItem}>
-                      <Typography variant="body2" gutterBottom>
-                        <KingBedIcon color="disabled" />
-                        <Grid item>{room} Room</Grid>
-                      </Typography>
-                    </Grid>
+                    <Grid container className={classes.iconContainer}>
+                      <Grid item className={classes.iconItem}>
+                        <Typography variant="body2" gutterBottom>
+                          <KingBedIcon color="disabled" />
+                          <Grid item>{room} Room</Grid>
+                        </Typography>
+                      </Grid>
 
-                    <Grid item className={classes.iconItem}>
-                      <Typography variant="body2" gutterBottom>
-                        <BathtubIcon color="disabled" />
-                        <Grid item>{bath} Bath</Grid>
-                      </Typography>
-                    </Grid>
+                      <Grid item className={classes.iconItem}>
+                        <Typography variant="body2" gutterBottom>
+                          <BathtubIcon color="disabled" />
+                          <Grid item>{bath} Bath</Grid>
+                        </Typography>
+                      </Grid>
 
-                    <Grid item className={classes.iconItem}>
-                      <Typography variant="body2" gutterBottom>
-                        <CropDinIcon color="disabled" />
-                        <Grid item>{size} m2</Grid>
-                      </Typography>
+                      <Grid item className={classes.iconItem}>
+                        <Typography variant="body2" gutterBottom>
+                          <CropDinIcon color="disabled" />
+                          <Grid item>{size} m2</Grid>
+                        </Typography>
+                      </Grid>
                     </Grid>
-                  </Grid>
-                </Paper>
-              );
-            }
-          )}
-        </Grid>
-        </>
+                  </Paper>
+                );
+              }
             )}
-         <FilterForm />
-      </div>
-    
-   
+          </Grid>
+        </>
+      )}
+    </div>
   );
 };
 

@@ -33,17 +33,15 @@ export const getPropierties = () => {
 // };
 export const set_filters = (datafilters) => {
   return (dispatch) => {
-  
-      dispatch({ type: SET_FILTERS, payload: datafilters })
-    
-  }
+    dispatch({ type: SET_FILTERS, payload: datafilters });
+  };
 };
 
-export const filterPropierties = () => {
+export const filterPropierties = (query) => {
   return async (dispatch) => {
     try {
       const apiResult = await $.ajax({
-        url: "http://localhost:3000/properties?price_gte=100000&price_lte=300000&room=5&bath=3&pet=true",
+        url: `http://localhost:3000/properties?${query}`,
         type: "GET",
         success: (res) => {
           console.log(res);

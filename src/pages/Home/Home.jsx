@@ -15,15 +15,12 @@ import {
 function Home() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    console.log("useEffect");
     dispatch(getPropierties());
-    setIsLoaded(true);
   }, []);
 
-  const state = useSelector((state) => state.data);
+  const state = useSelector((state) => state.reducer);
   // Coger dos propiedades en venta y alquiler
 
   console.log(state);
