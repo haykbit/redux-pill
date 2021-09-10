@@ -34,7 +34,8 @@ const CounterControls = () => {
   const classes = useStyles();
   
 
-  const state = useSelector((state)=>state.data);
+  const state = useSelector((state)=>state.reducer);
+ 
   // useEffect(()=>{
    
   //   //HandleGetPropierties();
@@ -85,6 +86,7 @@ const CounterControls = () => {
           
       <p>{state.value}</p> 
         ):(
+          
         <Grid container className={classes.listContainer}>
          {state.value.map( ( {id, image, province, offer, street, type, description, price, room, bath, size } ) => {
             return (
@@ -141,6 +143,7 @@ const CounterControls = () => {
             )
           })} 
         </Grid>
+      
             )}
          <FilterForm />
       </div>
