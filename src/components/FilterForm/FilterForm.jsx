@@ -79,6 +79,8 @@ export default function FilterForm() {
 
   return (
     <form className="filters_form">
+        <div>
+        <h4>Type house</h4>
       <div className="typeHouse">
         <div>
           <input
@@ -121,9 +123,11 @@ export default function FilterForm() {
           <label for="duplex">Duplex</label>
         </div>
       </div>
+      </div>
 
+     <div> 
+     <h4>Bedrooms</h4> 
       <div className="bedrooms">
-        <h3>Bedrooms</h3>
         <label className="container">
           <input
             onChange={handleChange}
@@ -178,10 +182,13 @@ export default function FilterForm() {
           ></input>
           <span className="checkmark"> 4+</span>
         </label>
+        
       </div>
+    </div>
 
+    <div> 
+     <h4>Bedrooms</h4> 
       <div className="bathrooms">
-        <div>
           <label className="container">
             <input
               onChange={handleChange}
@@ -192,8 +199,7 @@ export default function FilterForm() {
             ></input>
             <span className="checkmark">1</span>
           </label>
-        </div>
-        <div>
+        
           <label className="container">
             <input
               onChange={handleChange}
@@ -204,8 +210,7 @@ export default function FilterForm() {
             ></input>
             <span className="checkmark">2</span>
           </label>
-        </div>
-        <div>
+        
           <label className="container">
             <input
               onChange={handleChange}
@@ -216,16 +221,20 @@ export default function FilterForm() {
             ></input>
             <span className="checkmark">3+</span>
           </label>
-        </div>
+        
       </div>
-
+    </div>
+        <div>
+        <h4>Equip</h4> 
       <Select onChange={onChangeEquipment}>
         <Option>Equipment 1</Option>
         <Option>Equipment 2</Option>
         <Option>Equipment 3</Option>
         <Option>Equipment 4</Option>
       </Select>
-
+        </div>
+    <div> 
+     <h4>State</h4> 
       <div className="houseState">
         <div>
           <input
@@ -258,7 +267,10 @@ export default function FilterForm() {
           <label for="Good_condition">Good condition</label>
         </div>
       </div>
+    </div>
 
+<div>
+    <h4>Price Range</h4> 
       <RangeSlider
         endValue="150000"
         startValue="500"
@@ -268,14 +280,18 @@ export default function FilterForm() {
         step="4.000"
         onChange={onChangeRange}
       />
-
+</div>
+<div>
+    <h4>Price Range</h4> 
       <Select onChange={onChangeHours}>
         <Option>last 48 hours</Option>
         <Option>last 36 hours</Option>
         <Option>last 24 hours</Option>
         <Option>last 12 hours</Option>
       </Select>
-
+</div>
+<div>
+    <h4>More Filters</h4> 
       <div className="moreFilters">
         <div>
           <input
@@ -338,6 +354,7 @@ export default function FilterForm() {
           <label for="lift">Lift</label>
         </div>
       </div>
+    </div>
       {/* <button type="submit">send</button> */}
     </form>
   );
