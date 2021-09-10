@@ -47,7 +47,7 @@ export default makeStyles(() => ({
   search: {
     display: "flex",
     width: "50%",
-    alignItems: "center",
+    flexDirection: "column",
     justifyContent: "center",
     marginLeft: "5%"
   },
@@ -80,6 +80,8 @@ export default makeStyles(() => ({
     height:"150px",
     backgroundColor: "#FFFFFF",
     marginLeft: "0",
+    border: "3px solid #fff",
+    borderRadius: "5px",
     margin: "2%"
   },
   h1: {
@@ -94,5 +96,8 @@ export default makeStyles(() => ({
     width: "100%",
     display: "flex",
     justifyContent: "space-between"
-  }
+  },
+  offerButton: {
+
+  },
 }));

@@ -7,7 +7,7 @@ function App() {
   return (
     <BrowserRouter>
       <ReduxProvider>
-        <Route path="/home" 
+        <Route path="/" 
         exact 
         render={(routeProps) => <Home {...routeProps} />}
         />

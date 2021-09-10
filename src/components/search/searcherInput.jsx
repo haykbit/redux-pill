@@ -1,88 +1,85 @@
-
-import { TextField, IconButton } from '@material-ui/core';
-import  SearchIcon  from '@material-ui/icons/Search';
-import { useState } from 'react';
+import { TextField, IconButton, Button } from "@material-ui/core";
+import SearchIcon from "@material-ui/icons/Search";
+import RoomIcon from "@material-ui/icons/Room";
+import { useState } from "react";
 import $ from "jquery";
+import { Autocomplete } from "@material-ui/lab";
 import useStyles from "./style";
 import { useDispatch, useSelector } from "react-redux";
-import {getPropiertiesByCityName} from '../../redux/counter/actions';
+import { getPropiertiesByCityName } from "../../redux/counter/actions";
+import { NavLink } from "react-router-dom";
 
+export default function InputText() {
+  const [inputValue, setInputValue] = useState("");
+  const [citySearched, setCitySearched] = useState([]);
 
-export default function InputText(){
-    const [inputValue, setInputValue] = useState("");
-     const [citySearched, setCitySearched] = useState("");
-     const [defalutCityValue, setDefalutCityValue] = useState("");
-    const dispatch = useDispatch();
-    // const state = useSelector((state)=>state.data);
-    let cities=[];
-    $.ajax({
-        url:"http://localhost:3000/properties",
-        type:"GET",
-        success:(res)=>{
-            res.map((user)=>{
-                cities.push(user.city) ;
-            })
+  const dispatch = useDispatch();
+  const classes = useStyles();
+
+  // const state = useSelector((state)=>state.data);
+  let cities = [];
+
+  $.ajax({
+    url: "http://localhost:3000/properties",
+    type: "GET",
+    success: (res) => {
+      res.map((item) => {
+        var find = cities.indexOf(item.city) > -1;
+        if (find === true) {
+        } else {
+          cities.push(item.city);
         }
-    })
+      });
+    },
+  });
 
+  const handelChange = (event, value) => {
+    //setInputValue(e);
+    setCitySearched(value);
+    setInputValue(value);
+  };
 
-   
-    const classes = useStyles();
-    const handelChange=(e)=>{
-        setInputValue(e.target.value);
-        cities.map((city)=>{
-            Array.from(city).find((cityLeters)=>{
-                let letterMatch = cityLeters===e.target.value
-                
-                if(letterMatch===true)  {
-                    setCitySearched(city) ;  
-                    // e.target.value=defalutCityValue
-                    
-                }
-            })
-        })
-        console.log(citySearched);
-    }
+  async function handlePropietiesByCity(e) {
+    e.preventDefault();
+    dispatch(getPropiertiesByCityName(inputValue));
+  }
 
-    async function handlePropietiesByCity(e){
-        e.preventDefault();
-       console.log(defalutCityValue);
-        dispatch(getPropiertiesByCityName(inputValue))
-    }
-
-    return (
-        <>
-        
-       <form onSubmit={handlePropietiesByCity}>
-            <TextField 
-            
-            defaultValue=""
-            placeholder={defalutCityValue}
-            onChange={handelChange}
-            name="city"
-            id="outlined-basic" 
-            label="Where?" 
-            variant="outlined" />
-            <IconButton 
-            type="submit" 
-            className={classes.iconButton} 
-            aria-label="search"
-            
-            >
-            <SearchIcon />
-            </IconButton>
-        </form>
-        
-        <ul>
-            <li>
-            <button   onClick={()=>{
-              
-                dispatch(getPropiertiesByCityName(citySearched))
-                }}>{citySearched}</button>
-            </li>
-        </ul>
-        
-       </>
-    )
+  return (
+    <>
+      <form onSubmit={handlePropietiesByCity} className={classes.form}>
+        <Autocomplete
+          id="free-solo-demo"
+          freeSolo
+          onChange={handelChange}
+          disableClearable
+          options={cities}
+          renderInput={(params) => (
+            <TextField
+              className={classes.textSearch}
+              {...params}
+              label="Where you would like to live?"
+              margin="normal"
+              variant="outlined"
+            />
+          )}
+        />
+      </form>
+      {citySearched.length == 0 ? (
+        <p></p>
+      ) : (
+        <NavLink exact to="/dashboard" style={{ textDecoration: "none" }}>
+          <Button
+            variant="primpary"
+            onClick={() => {
+              dispatch(getPropiertiesByCityName(citySearched));
+            }}
+            className={classes.button}
+          >
+            <RoomIcon color="primary" />
+            {citySearched}
+          </Button>
+        </NavLink>
+      )}
+    </>
+  );
 }
-// className={classes.iconButton}

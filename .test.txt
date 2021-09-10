@@ -52,3 +52,20 @@
               </Paper>
             )
           })}
+
+
+
+          <Autocomplete
+          id="custom-input-demo"
+          options={cities}
+          onChange={handelChange}
+          renderInput={(params) => (
+            <div ref={params.InputProps.ref}>
+              <input
+                style={{ width: 200 }}
+                type="text"
+                {...params.inputProps}
+              />
+            </div>
+          )}
+        />
