@@ -5,6 +5,7 @@ import {
   FAV_USER_PROPIERTIES,
   FILTER_PROPIERTIES,
   CITY_PROPIERTIES,
+  SET_FILTERS,
   RESET_PROPIERTIES,
 } from "./types";
 
@@ -30,6 +31,13 @@ export const getPropierties = () => {
 //     //payload: Ayax petition data
 //   }
 // };
+export const set_filters = (datafilters) => {
+  return (dispatch) => {
+  
+      dispatch({ type: SET_FILTERS, payload: datafilters })
+    
+  }
+};
 
 export const filterPropierties = () => {
   return async (dispatch) => {

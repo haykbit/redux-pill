@@ -1,0 +1,162 @@
+.filters_form{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding:2%;
+  margin:2%;
+  gap:2%;
+  row-gap: 20%;
+  background-color: rgba(168, 217, 236, 0.5);
+  border-radius: 10px;
+ 
+}
+.typeHouse{
+  margin:5%;
+  display:grid;
+  grid-template-columns: 0.5fr 0.5fr;
+ font-size: 12px;
+ width: 100%;
+}
+.houseState{
+  margin:5%;
+  display:grid;
+  grid-template-columns: 0.5fr 0.5fr;
+  font-size: 12px;
+  width: 100%;
+  
+}
+.bedrooms{
+  margin:5%;
+  display:grid;
+  grid-template-columns:0.25fr 0.25fr 0.25fr 0.25fr 0.25fr;
+  font-size: 12px;
+}
+.bathrooms{
+  margin:5%;
+  display:grid;
+  grid-template-columns:0.25fr 0.25fr 0.25fr ;
+  font-size: 12px;
+  
+}
+.moreFilters{
+  margin:5%;
+  display:grid;
+  grid-template-columns: 0.5fr 0.5fr;
+  font-size: 12px;
+}
+/* input{
+  margin-bottom: 20px;
+} */
+.container{
+  display: block;
+  position: relative; 
+  padding-left: 15px;
+  bottom: 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  
+  
+}
+
+.containerLarge{
+  display: block;
+  position: relative; 
+  padding-left: 10px;
+  bottom: 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  
+}
+
+.checkmarkLarge{
+  position: absolute;
+  top: 0;
+  left: 0px;
+  height: 30px;
+  width: 50px;
+  background-color: rgba(247, 247, 247);
+  border: 0.5px solid rgb(166, 162, 162);
+  border-radius: 5px;
+ 
+
+}
+.container input{
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.containerLarge input{
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.checkmark{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 40px;
+  width: 25px;
+  background-color: rgba(247, 247, 247);
+  border: 0.5px solid rgb(166, 162, 162);
+  border-radius: 5px;
+  margin-left: 10px;
+  
+}
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+  color: white;
+}
+.containerLarge input:checked ~ .checkmarkLarge {
+  background-color: #2196F3;
+  color: white;
+}
+.checkmark:after {
+  
+  position: absolute;
+  display: none;
+}
+.checkmarkLarge:after {
+  
+  position: absolute;
+  display: none;
+}
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+.containerLarge input:checked ~ .checkmark:after {
+  display: block;
+}
+.container .checkmark:after {
+  left: 20px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  
+}
+.containerLarge .checkmarkLarge:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+ 
+}

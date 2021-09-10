@@ -5,6 +5,7 @@ import {
   FAV_USER_PROPIERTIES,
   FILTER_PROPIERTIES,
   CITY_PROPIERTIES,
+  SET_FILTERS,
   RESET_PROPIERTIES,
 } from "./types";
 
@@ -30,4 +31,16 @@ const reducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-export default reducer;
+const FilterReducer =  (state = INITIAL_STATE, action) => {
+  switch(action.type) {
+    
+    case SET_FILTERS:
+      return {  ...state, value: action.payload };  
+      
+    default: 
+      return state;
+  }
+}
+
+
+export  {reducer, FilterReducer };
