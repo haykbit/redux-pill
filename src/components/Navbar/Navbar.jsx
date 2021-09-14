@@ -9,6 +9,7 @@ function Navbar() {
   const history = useHistory();
   const classes = useStyles();
   const sessionState = useSelector((state) => state.sessionReducer.value);
+  let isLoged = true;
 
   useEffect(()=>{
     console.log("sessionstate", sessionState);
@@ -32,33 +33,22 @@ function Navbar() {
                   </NavLink>
                 </Grid>
                 <Grid item className={classes.link}>
-                  <NavLink exact to="/" style={{ textDecoration: "none" }}>
+                  <NavLink
+                    exact
+                    to="/propieties"
+                    style={{ textDecoration: "none" }}
+                  >
                     <Button className={classes.links} color="primary">
-                      Link
-                    </Button>
-                  </NavLink>
-                  <NavLink exact to="/" style={{ textDecoration: "none" }}>
-                    <Button className={classes.links} color="primary">
-                      Home
-                    </Button>
-                  </NavLink>
-                  <NavLink exact to="/" style={{ textDecoration: "none" }}>
-                    <Button className={classes.links} color="primary">
-                      Services
+                      Propieties
                     </Button>
                   </NavLink>
                   <NavLink
                     exact
-                    to="/"
+                    to="/dashboard"
                     style={{ textDecoration: "none" }}
-                    className={classes.login}
                   >
-                    <Button
-                      className={classes.links}
-                      variant="contained"
-                      color="primary"
-                    >
-                      Contact
+                    <Button className={classes.links} color="primary">
+                      Dashboard
                     </Button>
                   </NavLink>
                   <NavLink

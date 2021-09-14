@@ -15,7 +15,7 @@ import {
 } from "./types";
 
 
-const token=localStorage.getItem('tokken');
+const token=localStorage.getItem('token');
 export const logout = ()=>{
   
   return (dispatch)=>{dispatch({type:LOGOUT, playload:0})};
@@ -32,7 +32,7 @@ export const login = (user) => {
         success: (res) => {
           console.log(res);
           dispatch({ type: LOGIN, payload: res.data });
-          localStorage.setItem('tokken',res.data.token)
+          localStorage.setItem('token',res.data.token)
         },
       });
     } catch (error) {
@@ -80,6 +80,24 @@ export const getPropierties = () => {
   };
 };
 
+export const deletPropierties = (id, state) => {
+  return async (dispatch) => {
+    try {
+      await $.ajax({
+        url: `http://localhost:8100/api/properties/${id}`,
+        type: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+        success: (res) => {
+          console.log("DELETE: ", res.data);
+          dispatch({ type: GET_PROPIERTIES, payload: state });
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
 export const set_filters = (datafilters) => {
   return (dispatch) => {
     dispatch({ type: SET_FILTERS, payload: datafilters });
@@ -106,10 +124,12 @@ export const getPropiertiesByCityName = (city) => {
   return async (dispatch) => {
     try {
       await $.ajax({
-        url: `http://localhost:3000/properties?city=${city}`,
+        url: `http://localhost:8100/api/properties?city=${city}`,
         type: "GET",
+        headers: { Authorization: `Bearer ${token}` },
         success: (res) => {
-          dispatch({ type: CITY_PROPIERTIES, payload: res });
+          console.log(res);
+          dispatch({ type: CITY_PROPIERTIES, payload: res.data });
         },
       });
     } catch (error) {
