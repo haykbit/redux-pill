@@ -31,26 +31,32 @@ export default function Login() {
   return (
       <>
       {sessionState==0 ?(
-             <form onSubmit={sendData}>
-             <label>
-             <input 
-             onChange={handleSubmit}
-             defaultValue=""
-             name="email"
-             type="text" 
-              />
-             </label>
-     
-             <label>
+             <form class="row g-3" onSubmit={sendData}>
+                 <div class="col-md-6">
+                    <label for="inputEmail4" class="form-label">EMAIL</label>
+                    <input 
+                    onChange={handleSubmit}
+                    defaultValue=""
+                    name="email"
+                    type="email" 
+                    id="inputEmail4"
+                    />
+             </div>
+
+             <label for="inputPassword4" class="form-label">Password</label>
              <input 
              onChange={handleSubmit}
              defaultValue=""
              name="password"
-             type="text"  
+             type="password"  
+             class="form-control"
+             id="inputPassword4"
              />
-             </label>
+             
           
-           <button type="submit">send</button>
+             <div class="col-12">
+    <button type="submit" class="btn btn-primary">Sign in</button>
+  </div>
          
          </form>
           ):(
