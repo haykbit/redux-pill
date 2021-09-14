@@ -8,19 +8,21 @@ import {
   SET_FILTERS,
   RESET_PROPIERTIES,
 } from "./types";
-
+const token='5|NuKpvpUSA1q18x7ensh4KNmz8l0NUdmXcuiWIhTx';
 export const getPropierties = () => {
   return async (dispatch) => {
     try {
       const apiResult = await $.ajax({
-        url: "http://localhost:3000/properties",
+        url: "http://localhost:8100/api/properties",
         type: "GET",
+        headers:{'Authorization': `Bearer ${token}`},
         success: (res) => {
-          dispatch({ type: GET_PROPIERTIES, payload: res });
+          console.log(res)
+          dispatch({ type: GET_PROPIERTIES, payload: res.data });
         },
       });
     } catch (error) {
-      console.log("Error");
+      console.log(error);
     }
   };
 };

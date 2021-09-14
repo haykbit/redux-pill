@@ -26,96 +26,105 @@ function Home() {
     dispatch(getPropierties());
   }, []);
 
-  const state = useSelector((state) => state.reducer);
+  const state = useSelector((state) => state.reducer.value);
+   console.log("estado",state);
 
   return (
-    <>
-      <div className={classes.root}>
-        <Navbar />
-        <Grid container className={classes.cover}>
-          <Grid item className={classes.topSection}>
-            <Grid item className={classes.text}>
-              <Typography gutterBottom variant="h3">
-                There are many houses, but without you there could never be a
-                home
-              </Typography>
-              <br></br>
-              <Typography variant="h5" gutterBottom>
-                Search and find your new nest
-              </Typography>
-            </Grid>
-
-            <Grid item className={classes.search}>
-              <InputSearch />
-            </Grid>
-          </Grid>
-
-          <Grid item className={classes.bottomSection}>
-            <Grid Item className={classes.popular}>
-              <NavLink exact to="/dashboard" style={{ textDecoration: "none" }}>
-                <Button
-                  className={classes.offerButton}
-                  variant="contained"
-                  color="primary"
-                  onClick={() => {
-                    dispatch(getPropiertiesOffer("Sell"));
-                  }}
-                >
-                  View sales
-                </Button>
-              </NavLink>
-
-              {state.value.length == 0 ? (
-                <CircularProgress />
-              ) : (
-                <Grid Item className={classes.containerPop}>
-                  <CardMedia
-                    className={classes.item}
-                    image={state.value[2].image}
-                    title="Contemplative Reptile"
-                  />
-                  <CardMedia
-                    className={classes.item}
-                    image={state.value[3].image}
-                    title="Contemplative Reptile"
-                  />
-                </Grid>
-              )}
-            </Grid>
-            <Grid Item className={classes.popular}>
-              <NavLink exact to="/dashboard" style={{ textDecoration: "none" }}>
-                <Button
-                  className={classes.offerButton}
-                  variant="contained"
-                  color="primary"
-                  onClick={() => {
-                    dispatch(getPropiertiesOffer("Rent"));
-                  }}
-                >
-                  View rentals
-                </Button>
-              </NavLink>
-              {state.value.length == 0 ? (
-                <CircularProgress />
-              ) : (
-                <Grid Item className={classes.containerPop}>
-                  <CardMedia
-                    className={classes.item}
-                    image={state.value[0].image}
-                    title="Contemplative Reptile"
-                  />
-                  <CardMedia
-                    className={classes.item}
-                    image={state.value[1].image}
-                    title="Contemplative Reptile"
-                  />
-                </Grid>
-              )}
-            </Grid>
-          </Grid>
-        </Grid>
-      </div>
+    
+   <>
+    {state.length== 0 ?(
+    <p>loading...</p>
+    ):(
+      <p>{state[0].id}</p>
+    )}
     </>
+    // <>
+    //   <div className={classes.root}>
+    //     <Navbar />
+    //     <Grid container className={classes.cover}>
+    //       <Grid item className={classes.topSection}>
+    //         <Grid item className={classes.text}>
+    //           <Typography gutterBottom variant="h3">
+    //             There are many houses, but without you there could never be a
+    //             home
+    //           </Typography>
+    //           <br></br>
+    //           <Typography variant="h5" gutterBottom>
+    //             Search and find your new nest
+    //           </Typography>
+    //         </Grid>
+
+    //         <Grid item className={classes.search}>
+    //           <InputSearch />
+    //         </Grid>
+    //       </Grid>
+
+    //       <Grid item className={classes.bottomSection}>
+    //         <Grid Item className={classes.popular}>
+    //           <NavLink exact to="/dashboard" style={{ textDecoration: "none" }}>
+    //             <Button
+    //               className={classes.offerButton}
+    //               variant="contained"
+    //               color="primary"
+    //               onClick={() => {
+    //                 dispatch(getPropiertiesOffer("Sell"));
+    //               }}
+    //             >
+    //               View sales
+    //             </Button>
+    //           </NavLink>
+
+    //           {state.value.length == 0 ? (
+    //             <CircularProgress />
+    //           ) : (
+    //             <Grid Item className={classes.containerPop}>
+    //               <CardMedia
+    //                 className={classes.item}
+    //                 image={state.value[2].image}
+    //                 title="Contemplative Reptile"
+    //               />
+    //               <CardMedia
+    //                 className={classes.item}
+    //                 image={state.value[3].image}
+    //                 title="Contemplative Reptile"
+    //               />
+    //             </Grid>
+    //           )}
+    //         </Grid>
+    //         <Grid Item className={classes.popular}>
+    //           <NavLink exact to="/dashboard" style={{ textDecoration: "none" }}>
+    //             <Button
+    //               className={classes.offerButton}
+    //               variant="contained"
+    //               color="primary"
+    //               onClick={() => {
+    //                 dispatch(getPropiertiesOffer("Rent"));
+    //               }}
+    //             >
+    //               View rentals
+    //             </Button>
+    //           </NavLink>
+    //           {state.value.length == 0 ? (
+    //             <CircularProgress />
+    //           ) : (
+    //             <Grid Item className={classes.containerPop}>
+    //               <CardMedia
+    //                 className={classes.item}
+    //                 image={state.value[0].image}
+    //                 title="Contemplative Reptile"
+    //               />
+    //               <CardMedia
+    //                 className={classes.item}
+    //                 image={state.value[1].image}
+    //                 title="Contemplative Reptile"
+    //               />
+    //             </Grid>
+    //           )}
+    //         </Grid>
+    //       </Grid>
+    //     </Grid>
+    //   </div>
+    // </>
   );
 }
 
