@@ -1,4 +1,4 @@
-import { INITIAL_STATE, INITIAL_FILTER_STATE } from "./state";
+import { INITIAL_STATE, INITIAL_FILTER_STATE, INITIAL_SESSION_STATE } from "./state";
 
 import {
   GET_PROPIERTIES,
@@ -7,6 +7,10 @@ import {
   CITY_PROPIERTIES,
   SET_FILTERS,
   RESET_PROPIERTIES,
+  SET_TOKEN,
+  LOGIN,
+  REGISTER,
+  LOGOUT
 } from "./types";
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -41,4 +45,19 @@ const FilterReducer = (state = INITIAL_FILTER_STATE, action) => {
   }
 };
 
-export { reducer, FilterReducer };
+const sessionReducer = (state = INITIAL_SESSION_STATE, action) => {
+  switch (action.type) {
+ 
+    case LOGIN:
+      return { ...state, value: action.payload };
+    case REGISTER:
+      return { ...state, value: action.payload };
+    case LOGOUT:
+      return { ...INITIAL_SESSION_STATE };
+
+    default:
+      return state;
+  }
+};
+
+export { reducer, FilterReducer, sessionReducer };

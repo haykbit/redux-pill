@@ -17,5 +17,6 @@ const INITIAL_FILTER_STATE = {
     lift: false,
   },
 };
+const INITIAL_SESSION_STATE={ status:"ok", value:0}
 
-export { INITIAL_STATE, INITIAL_FILTER_STATE };
+export { INITIAL_STATE, INITIAL_FILTER_STATE, INITIAL_SESSION_STATE };

@@ -1,5 +1,6 @@
 import $ from "jquery";
 
+
 import {
   GET_PROPIERTIES,
   FAV_USER_PROPIERTIES,
@@ -7,15 +8,67 @@ import {
   CITY_PROPIERTIES,
   SET_FILTERS,
   RESET_PROPIERTIES,
+  SET_TOKEN,
+  LOGIN,
+  REGISTER,
+  LOGOUT
 } from "./types";
-const token='5|NuKpvpUSA1q18x7ensh4KNmz8l0NUdmXcuiWIhTx';
+
+
+const token=localStorage.getItem('tokken');
+export const logout = ()=>{
+  
+  return (dispatch)=>{dispatch({type:LOGOUT, playload:0})};
+
+}
+export const login = (user) => {
+  return async (dispatch) => {
+    try {
+      const apiResult = await $.ajax({
+        url: "http://localhost:8100/api/login",
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        data:JSON.stringify(user),          
+        success: (res) => {
+          console.log(res);
+          dispatch({ type: LOGIN, payload: res.data });
+          localStorage.setItem('tokken',res.data.token)
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const register = (newUser) => {
+  return async (dispatch) => {
+    try {
+      const apiResult = await $.ajax({
+        url: "http://localhost:8100/api/register",
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        data:JSON.stringify(newUser),   
+        success: (res) => {
+          console.log(res);
+          dispatch({ type: REGISTER, payload: res.data });
+          localStorage.setItem('tokken',res.data.token)
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
 export const getPropierties = () => {
+ 
   return async (dispatch) => {
     try {
       const apiResult = await $.ajax({
         url: "http://localhost:8100/api/properties",
         type: "GET",
-        headers:{'Authorization': `Bearer ${token}`},
+        headers:{'Authorization': `Bearer 20|B7i8AOsjPSrYyprJeGIt0l8rmdb4SJsadvs8e9DW`},
         success: (res) => {
           console.log(res)
           dispatch({ type: GET_PROPIERTIES, payload: res.data });
