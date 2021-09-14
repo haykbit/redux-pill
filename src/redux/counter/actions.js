@@ -24,15 +24,16 @@ export const logout = ()=>{
 export const login = (user) => {
   return async (dispatch) => {
     try {
+      console.log("user: ",user )
       const apiResult = await $.ajax({
         url: "http://localhost:8100/api/login",
         type: "POST",
-        contentType: "application/json; charset=utf-8",
+        contentType: "application/json",
         data:JSON.stringify(user),          
         success: (res) => {
-          console.log(res);
-          dispatch({ type: LOGIN, payload: res.data });
+          console.log("esta es la res",res);
           localStorage.setItem('token',res.data.token)
+          dispatch({ type: LOGIN, payload: res.data });
         },
       });
     } catch (error) {
@@ -70,7 +71,7 @@ export const getPropierties = () => {
         type: "GET",
         headers:{'Authorization': `Bearer 20|B7i8AOsjPSrYyprJeGIt0l8rmdb4SJsadvs8e9DW`},
         success: (res) => {
-          console.log(res)
+          console.log("this is my res",res)
           dispatch({ type: GET_PROPIERTIES, payload: res.data });
         },
       });
@@ -86,7 +87,7 @@ export const deletPropierties = (id, state) => {
       await $.ajax({
         url: `http://localhost:8100/api/properties/${id}`,
         type: "DELETE",
-        headers: { Authorization: `Bearer ${token}` },
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         success: (res) => {
           console.log("DELETE: ", res.data);
           dispatch({ type: GET_PROPIERTIES, payload: state });

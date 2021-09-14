@@ -8,6 +8,7 @@ import { useState } from "react";
 
 
 
+
 export default function Login() {
     const dispatch = useDispatch();
     const [userData, setUserData] = useState({})
@@ -18,7 +19,8 @@ export default function Login() {
    
     setUserData({
         ...userData,
-        [e.target.name]:e.target.value
+        [e.target.name]:e.target.value,
+      
     })
   
   };
@@ -31,32 +33,26 @@ export default function Login() {
   return (
       <>
       {sessionState==0 ?(
-             <form class="row g-3" onSubmit={sendData}>
-                 <div class="col-md-6">
-                    <label for="inputEmail4" class="form-label">EMAIL</label>
-                    <input 
-                    onChange={handleSubmit}
-                    defaultValue=""
-                    name="email"
-                    type="email" 
-                    id="inputEmail4"
-                    />
-             </div>
-
-             <label for="inputPassword4" class="form-label">Password</label>
+             <form onSubmit={sendData}>
+             <label>
+             <input 
+             onChange={handleSubmit}
+             defaultValue=""
+             name="email"
+             type="text" 
+              />
+             </label>
+     
+             <label>
              <input 
              onChange={handleSubmit}
              defaultValue=""
              name="password"
-             type="password"  
-             class="form-control"
-             id="inputPassword4"
+             type="text"  
              />
-             
+             </label>
           
-             <div class="col-12">
-    <button type="submit" class="btn btn-primary">Sign in</button>
-  </div>
+           <button type="submit">send</button>
          
          </form>
           ):(
