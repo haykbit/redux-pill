@@ -4,3 +4,7 @@ export const FILTER_PROPIERTIES = "FILTER_PROPIERTIES";
 export const CITY_PROPIERTIES = "CITY_PROPIERTIES";
 export const RESET_PROPIERTIES = "RESET_PROPIERTIES";
 export const SET_FILTERS = 'SET_FILTERS';
+export const SET_TOKEN ='SET_TOKEN';
+export const LOGIN ='LOGIN';
+export const REGISTER ='REGISTER';
+export const LOGOUT ='LOGOUT';

@@ -32,7 +32,7 @@ export default function FilterForm() {
     dispatch(
       set_filters({
         ...value,
-        [e.target.name]: e.target.value,
+        [e.target.name]:e.target.value,
       })
     );
     setdoFilters(true);
