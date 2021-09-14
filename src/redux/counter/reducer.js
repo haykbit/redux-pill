@@ -15,7 +15,7 @@ const reducer = (state = INITIAL_STATE, action) => {
       return { ...state, value: action.payload };
 
     case FAV_USER_PROPIERTIES:
-      return { ...state, value: action.payload };
+      return { ...state, favorites: action.payload };
 
     case FILTER_PROPIERTIES:
       return { ...state, value: action.payload };

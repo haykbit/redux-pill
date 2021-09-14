@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import $ from "jquery";
 
-import { TextField, IconButton, Button } from "@material-ui/core";
+import { TextField, Button } from "@material-ui/core";
 import RoomIcon from "@material-ui/icons/Room";
 import { Autocomplete } from "@material-ui/lab";
 import useStyles from "./style";
@@ -18,17 +18,20 @@ export default function InputText() {
   const classes = useStyles();
 
   let cities = [];
-
+  const token = "2|VbAG49PCnSLCXREoDAMMjs2kN97WPoaBA5V71h1f";
   $.ajax({
-    url: "http://localhost:3000/properties",
+    url: "http://localhost:8100/api/properties",
+    type: "GET",
+    headers: { Authorization: `Bearer ${token}` },
     type: "GET",
     success: (res) => {
-      res.map((item) => {
+      res.data.map((item) => {
         var find = cities.indexOf(item.city) > -1;
         if (find === true) {
         } else {
           cities.push(item.city);
         }
+        return find;
       });
     },
   });
@@ -67,7 +70,7 @@ export default function InputText() {
       {citySearched.length == 0 ? (
         <p></p>
       ) : (
-        <NavLink exact to="/dashboard" style={{ textDecoration: "none" }}>
+        <NavLink exact to="/propierties" style={{ textDecoration: "none" }}>
           <Button
             variant="primpary"
             onClick={() => {
