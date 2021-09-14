@@ -7,6 +7,7 @@ import useStyles from "./style";
 
 function Navbar() {
   const classes = useStyles();
+  let isLoged = true;
 
   return (
     <>
@@ -26,35 +27,42 @@ function Navbar() {
                   </NavLink>
                 </Grid>
                 <Grid item className={classes.link}>
-                  <NavLink exact to="/" style={{ textDecoration: "none" }}>
+                  <NavLink
+                    exact
+                    to="/propieties"
+                    style={{ textDecoration: "none" }}
+                  >
                     <Button className={classes.links} color="primary">
-                      Link
-                    </Button>
-                  </NavLink>
-                  <NavLink exact to="/" style={{ textDecoration: "none" }}>
-                    <Button className={classes.links} color="primary">
-                      Home
-                    </Button>
-                  </NavLink>
-                  <NavLink exact to="/" style={{ textDecoration: "none" }}>
-                    <Button className={classes.links} color="primary">
-                      Services
+                      Propieties
                     </Button>
                   </NavLink>
                   <NavLink
                     exact
-                    to="/"
+                    to="/dashboard"
                     style={{ textDecoration: "none" }}
-                    className={classes.login}
                   >
-                    <Button
-                      className={classes.links}
-                      variant="contained"
-                      color="primary"
-                    >
-                      Contact
+                    <Button className={classes.links} color="primary">
+                      Dashboard
                     </Button>
                   </NavLink>
+                  {!isLoged ? (
+                    <p> Hi User! </p>
+                  ) : (
+                    <NavLink
+                      exact
+                      to="/Login"
+                      style={{ textDecoration: "none" }}
+                      className={classes.login}
+                    >
+                      <Button
+                        className={classes.links}
+                        variant="contained"
+                        color="primary"
+                      >
+                        Login
+                      </Button>
+                    </NavLink>
+                  )}
                 </Grid>
               </Grid>
             </Toolbar>

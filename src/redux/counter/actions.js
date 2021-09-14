@@ -9,18 +9,40 @@ import {
   RESET_PROPIERTIES,
 } from "./types";
 
+const token = "2|VbAG49PCnSLCXREoDAMMjs2kN97WPoaBA5V71h1f";
+
 export const getPropierties = () => {
   return async (dispatch) => {
     try {
-      const apiResult = await $.ajax({
-        url: "http://localhost:3000/properties",
+      await $.ajax({
+        url: "http://localhost:8100/api/properties",
         type: "GET",
+        headers: { Authorization: `Bearer ${token}` },
         success: (res) => {
-          dispatch({ type: GET_PROPIERTIES, payload: res });
+          console.log(res);
+          dispatch({ type: GET_PROPIERTIES, payload: res.data });
         },
       });
     } catch (error) {
-      console.log("Error");
+      console.log(error);
+    }
+  };
+};
+
+export const deletPropierties = (id, state) => {
+  return async (dispatch) => {
+    try {
+      await $.ajax({
+        url: `http://localhost:8100/api/properties/${id}`,
+        type: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+        success: (res) => {
+          console.log("DELETE: ", res.data);
+          dispatch({ type: GET_PROPIERTIES, payload: state });
+        },
+      });
+    } catch (error) {
+      console.log(error);
     }
   };
 };
@@ -51,10 +73,12 @@ export const getPropiertiesByCityName = (city) => {
   return async (dispatch) => {
     try {
       await $.ajax({
-        url: `http://localhost:3000/properties?city=${city}`,
+        url: `http://localhost:8100/api/properties?city=${city}`,
         type: "GET",
+        headers: { Authorization: `Bearer ${token}` },
         success: (res) => {
-          dispatch({ type: CITY_PROPIERTIES, payload: res });
+          console.log(res);
+          dispatch({ type: CITY_PROPIERTIES, payload: res.data });
         },
       });
     } catch (error) {

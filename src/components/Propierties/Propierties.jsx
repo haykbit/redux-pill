@@ -49,7 +49,7 @@ const CounterControls = () => {
         </Button>
       </Grid>
 
-      {state.value == 0 ? (
+      {state.value === 0 ? (
         <div className={classes.noData}>
           <h1>
             Ups... There is not propierties with the filters that you choosed
@@ -57,7 +57,7 @@ const CounterControls = () => {
         </div>
       ) : (
         <>
-          {stateFilters.value == 0 ? (
+          {stateFilters.value === 0 ? (
             <h1>No data colected</h1>
           ) : (
             <p>{stateFilters.value.typeHouse}</p>

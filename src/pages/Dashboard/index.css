@@ -1,0 +1,24 @@
+.app {
+  margin: 2rem auto;
+  width: 90vw;
+}
+
+.app > h1 {
+  text-align: center;
+  color: white;
+  font-weight: bolder;
+  border-bottom: yellow 0.5px dashed;
+}
+
+table {
+  width: 70%;
+}
+
+td {
+  text-align: center;
+  padding: 1%;
+}
+
+.MuiDataGrid-root .MuiDataGrid-columnHeaderTitle {
+  overflow: auto !important;
+}
