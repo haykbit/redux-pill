@@ -42,15 +42,23 @@ function Navbar() {
                       Propieties
                     </Button>
                   </NavLink>
+                  {sessionState==0?(
+                    <p>login to admin</p>
+                  ):(
                   <NavLink
                     exact
                     to="/dashboard"
                     style={{ textDecoration: "none" }}
+                    disabled="true"
+
                   >
-                    <Button className={classes.links} color="primary">
+                    <Button 
+                    className={classes.links} 
+                    color="primary">
                       Dashboard
                     </Button>
                   </NavLink>
+                  )}
                   <NavLink
                     exact
                     to="/register"

@@ -18,9 +18,19 @@ import {
 const token=localStorage.getItem('token');
 export const logout = ()=>{
   
-  return (dispatch)=>{dispatch({type:LOGOUT, playload:0})};
+  return async (dispatch)=>{
+    const apiResults =await $.ajax({
+      url:"http://localhost:8100/api/logout",
+      type:"POST",
+      success:(res)=>{
 
+        console.log("log res",res)
+        dispatch({type:LOGOUT, playload:0})
+      }
+    });
+  }
 }
+
 export const login = (user) => {
   return async (dispatch) => {
     try {
@@ -69,7 +79,7 @@ export const getPropierties = () => {
       const apiResult = await $.ajax({
         url: "http://localhost:8100/api/properties",
         type: "GET",
-        headers:{'Authorization': `Bearer 20|B7i8AOsjPSrYyprJeGIt0l8rmdb4SJsadvs8e9DW`},
+         headers:{'Authorization': `Bearer 20|B7i8AOsjPSrYyprJeGIt0l8rmdb4SJsadvs8e9DW`},
         success: (res) => {
           console.log("this is my res",res)
           dispatch({ type: GET_PROPIERTIES, payload: res.data });
