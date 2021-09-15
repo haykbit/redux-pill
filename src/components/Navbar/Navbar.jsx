@@ -29,7 +29,7 @@ function Navbar() {
                 <Grid item className={classes.link}>
                   <NavLink
                     exact
-                    to="/propieties"
+                    to="/propierties"
                     style={{ textDecoration: "none" }}
                   >
                     <Button className={classes.links} color="primary">
