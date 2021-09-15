@@ -1,6 +1,5 @@
 import $ from "jquery";
 
-
 import {
   GET_PROPIERTIES,
   FAV_USER_PROPIERTIES,
@@ -11,28 +10,29 @@ import {
   SET_TOKEN,
   LOGIN,
   REGISTER,
-  LOGOUT
+  LOGOUT,
 } from "./types";
 
+const token = localStorage.getItem("token");
+export const logout = () => {
+  return (dispatch) => {
+    localStorage.removeItem("token");
+    dispatch({ type: LOGOUT, playload: 0 });
+  };
+};
 
-const token=localStorage.getItem('token');
-export const logout = ()=>{
-  
-  return (dispatch)=>{dispatch({type:LOGOUT, playload:0})};
-
-}
 export const login = (user) => {
   return async (dispatch) => {
     try {
-      console.log("user: ",user )
+      console.log("user: ", user);
       const apiResult = await $.ajax({
         url: "http://localhost:8100/api/login",
         type: "POST",
         contentType: "application/json",
-        data:JSON.stringify(user),          
+        data: JSON.stringify(user),
         success: (res) => {
-          console.log("esta es la res",res);
-          localStorage.setItem('token',res.data.token)
+          console.log("esta es la res", res);
+          localStorage.setItem("token", res.data.token);
           dispatch({ type: LOGIN, payload: res.data });
         },
       });
@@ -49,11 +49,11 @@ export const register = (newUser) => {
         url: "http://localhost:8100/api/register",
         type: "POST",
         contentType: "application/json; charset=utf-8",
-        data:JSON.stringify(newUser),   
+        data: JSON.stringify(newUser),
         success: (res) => {
           console.log(res);
           dispatch({ type: REGISTER, payload: res.data });
-          localStorage.setItem('tokken',res.data.token)
+          localStorage.setItem("tokken", res.data.token);
         },
       });
     } catch (error) {
@@ -63,15 +63,14 @@ export const register = (newUser) => {
 };
 
 export const getPropierties = () => {
- 
   return async (dispatch) => {
     try {
       const apiResult = await $.ajax({
         url: "http://localhost:8100/api/properties",
         type: "GET",
-        headers:{'Authorization': `Bearer 20|B7i8AOsjPSrYyprJeGIt0l8rmdb4SJsadvs8e9DW`},
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         success: (res) => {
-          console.log("this is my res",res)
+          console.log("this is my res", res);
           dispatch({ type: GET_PROPIERTIES, payload: res.data });
         },
       });
@@ -87,7 +86,7 @@ export const deletPropierties = (id, state) => {
       await $.ajax({
         url: `http://localhost:8100/api/properties/${id}`,
         type: "DELETE",
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         success: (res) => {
           console.log("DELETE: ", res.data);
           dispatch({ type: GET_PROPIERTIES, payload: state });

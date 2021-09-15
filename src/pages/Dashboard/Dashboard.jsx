@@ -25,22 +25,18 @@ const validateEmail = (email) => {
 const Dashboard = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const [itemDelete, setDelete] = useState();
   const state = useSelector((state) => state.reducer);
 
   useEffect(() => {
     dispatch(getPropierties());
-  }, [state]);
+    setDelete("");
+  }, [itemDelete]);
 
   console.log("DASHBOARD STATE: ", state.value);
 
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
-    /*{
-      field: "i",
-      headerName: "Propiertie",
-      width: 150,
-      editable: true,
-    },*/
     {
       field: "street",
       headerName: "Street",
@@ -78,6 +74,7 @@ const Dashboard = () => {
         const { id } = props;
 
         const remove = () => {
+          setDelete("deleted");
           dispatch(deletPropierties(id, state.value));
         };
 

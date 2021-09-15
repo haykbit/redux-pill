@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import { Grid, Button, AppBar, Toolbar } from "@material-ui/core";
 import { useSelector } from "react-redux";
@@ -9,12 +9,11 @@ function Navbar() {
   const history = useHistory();
   const classes = useStyles();
   const sessionState = useSelector((state) => state.sessionReducer.value);
-  let isLoged = true;
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log("sessionstate", sessionState);
     // history.push("/");
-  },[])
+  }, []);
   return (
     <>
       <div className={classes.root}>
@@ -35,7 +34,7 @@ function Navbar() {
                 <Grid item className={classes.link}>
                   <NavLink
                     exact
-                    to="/propieties"
+                    to="/propierties"
                     style={{ textDecoration: "none" }}
                   >
                     <Button className={classes.links} color="primary">
@@ -51,49 +50,52 @@ function Navbar() {
                       Dashboard
                     </Button>
                   </NavLink>
-                  <NavLink
-                    exact
-                    to="/register"
-                    style={{ textDecoration: "none" }}
-                    className={classes.login}
-                  >
-                    <Button
-                      className={classes.links}
-                      variant="endIcon"
-                      color="default"
+                  {!localStorage.getItem("token") ? (
+                    <>
+                      <NavLink
+                        exact
+                        to="/login"
+                        style={{ textDecoration: "none" }}
+                        className={classes.login}
+                      >
+                        <Button
+                          className={classes.links}
+                          variant="endIcon"
+                          color="default"
+                        >
+                          LOGIN
+                        </Button>
+                      </NavLink>
+                      <NavLink
+                        exact
+                        to="/register"
+                        style={{ textDecoration: "none" }}
+                        className={classes.login}
+                      >
+                        <Button
+                          className={classes.links}
+                          variant="endIcon"
+                          color="default"
+                        >
+                          REGISTER
+                        </Button>
+                      </NavLink>
+                    </>
+                  ) : (
+                    <NavLink
+                      exact
+                      to="/logout"
+                      style={{ textDecoration: "none" }}
+                      className={classes.login}
                     >
-                      REGISTER
-                    </Button>
-                  </NavLink>
-                  {sessionState==0?(
-                  <NavLink
-                    exact
-                    to="/login"
-                    style={{ textDecoration: "none" }}
-                    className={classes.login}
-                  >
-                    <Button
-                      className={classes.links}
-                      variant="endIcon"
-                      color="default"
-                    >
-                      LOGIN
-                    </Button>
-                  </NavLink>
-                  ):(<NavLink
-                    exact
-                    to="/logout"
-                    style={{ textDecoration: "none" }}
-                    className={classes.login}
-                  >
-                    <Button
-                      className={classes.links}
-                      variant="endIcon"
-                      color="default"
-                    >
-                      LOGOUT
-                    </Button>
-                  </NavLink>
+                      <Button
+                        className={classes.links}
+                        variant="endIcon"
+                        color="default"
+                      >
+                        LOGOUT
+                      </Button>
+                    </NavLink>
                   )}
                 </Grid>
               </Grid>
