@@ -7,13 +7,11 @@ import {
   Button,
   Typography,
   CardMedia,
-  LinearProgress,
+  CircularProgress,
 } from "@material-ui/core";
 import useStyles from "./style";
 import InputSearch from "../../components/Search/SearcherInput";
 import Navbar from "../../components/Navbar/Navbar";
-import Login from "../Login/Login";
-import Register from "../Register/Register";
 
 import {
   getPropierties,
@@ -34,14 +32,7 @@ function Home() {
   return (
     <>
       {state.length == 0 ? (
-        <>
-          <LinearProgress />
-          <h3>Permission denied for this resource</h3>
-          <div style={{ display: "flex" }}>
-            <Login {...state} />
-            <Register />
-          </div>
-        </>
+        <CircularProgress />
       ) : (
         <div className={classes.root}>
           <Navbar />
@@ -83,7 +74,7 @@ function Home() {
                 </NavLink>
 
                 {state.length == 0 ? (
-                  <LinearProgress />
+                  <CircularProgress />
                 ) : (
                   <Grid Item className={classes.containerPop}>
                     <CardMedia
@@ -117,7 +108,7 @@ function Home() {
                   </Button>
                 </NavLink>
                 {state.length == 0 ? (
-                  <LinearProgress />
+                  <CircularProgress />
                 ) : (
                   <Grid Item className={classes.containerPop}>
                     <CardMedia
