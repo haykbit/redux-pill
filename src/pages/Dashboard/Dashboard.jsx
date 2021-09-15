@@ -26,10 +26,10 @@ const Dashboard = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const state = useSelector((state) => state.reducer);
-
-  // useEffect(() => {
-  //   dispatch(getPropierties());
-  // }, [state]);
+  const [render, setRender]= useState(false)
+  useEffect(() => {
+    dispatch(getPropierties());
+  }, [render]);
 
   console.log("DASHBOARD STATE: ", state.value);
 
@@ -79,6 +79,7 @@ const Dashboard = () => {
 
         const remove = () => {
           dispatch(deletPropierties(id, state.value));
+          setRender(true);
         };
 
         return (
