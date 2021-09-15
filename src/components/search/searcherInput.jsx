@@ -18,11 +18,11 @@ export default function InputText() {
   const classes = useStyles();
 
   let cities = [];
-  const token = "2|VbAG49PCnSLCXREoDAMMjs2kN97WPoaBA5V71h1f";
+
   $.ajax({
     url: "http://localhost:8100/api/properties",
     type: "GET",
-    headers: { Authorization: `Bearer ${token}` },
+    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     success: (res) => {
       res.data.map((item) => {
         var find = cities.indexOf(item.city) > -1;
