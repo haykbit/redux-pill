@@ -1,20 +1,17 @@
-import React,{useEffect} from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import React, { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import { Grid, Button, AppBar, Toolbar } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import logo from "../../assets/logo-2.jpg";
 import useStyles from "./style";
 
 function Navbar() {
-  const history = useHistory();
   const classes = useStyles();
   const sessionState = useSelector((state) => state.sessionReducer.value);
-  let isLoged = true;
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log("sessionstate", sessionState);
-    // history.push("/");
-  },[])
+  }, []);
   return (
     <>
       <div className={classes.root}>
@@ -42,22 +39,19 @@ function Navbar() {
                       Propieties
                     </Button>
                   </NavLink>
-                  {sessionState==0?(
+                  {sessionState === 0 ? (
                     <p>login to admin</p>
-                  ):(
-                  <NavLink
-                    exact
-                    to="/dashboard"
-                    style={{ textDecoration: "none" }}
-                    disabled="true"
-
-                  >
-                    <Button 
-                    className={classes.links} 
-                    color="primary">
-                      Dashboard
-                    </Button>
-                  </NavLink>
+                  ) : (
+                    <NavLink
+                      exact
+                      to="/dashboard"
+                      style={{ textDecoration: "none" }}
+                      disabled="true"
+                    >
+                      <Button className={classes.links} color="primary">
+                        Dashboard
+                      </Button>
+                    </NavLink>
                   )}
                   <NavLink
                     exact
@@ -73,35 +67,36 @@ function Navbar() {
                       REGISTER
                     </Button>
                   </NavLink>
-                  {sessionState==0?(
-                  <NavLink
-                    exact
-                    to="/login"
-                    style={{ textDecoration: "none" }}
-                    className={classes.login}
-                  >
-                    <Button
-                      className={classes.links}
-                      variant="endIcon"
-                      color="default"
+                  {sessionState === 0 ? (
+                    <NavLink
+                      exact
+                      to="/login"
+                      style={{ textDecoration: "none" }}
+                      className={classes.login}
                     >
-                      LOGIN
-                    </Button>
-                  </NavLink>
-                  ):(<NavLink
-                    exact
-                    to="/logout"
-                    style={{ textDecoration: "none" }}
-                    className={classes.login}
-                  >
-                    <Button
-                      className={classes.links}
-                      variant="endIcon"
-                      color="default"
+                      <Button
+                        className={classes.links}
+                        variant="endIcon"
+                        color="default"
+                      >
+                        LOGIN
+                      </Button>
+                    </NavLink>
+                  ) : (
+                    <NavLink
+                      exact
+                      to="/logout"
+                      style={{ textDecoration: "none" }}
+                      className={classes.login}
                     >
-                      LOGOUT
-                    </Button>
-                  </NavLink>
+                      <Button
+                        className={classes.links}
+                        variant="endIcon"
+                        color="default"
+                      >
+                        LOGOUT
+                      </Button>
+                    </NavLink>
                   )}
                 </Grid>
               </Grid>

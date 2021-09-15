@@ -3,12 +3,10 @@ import $ from "jquery";
 
 import {
   GET_PROPIERTIES,
-  FAV_USER_PROPIERTIES,
   FILTER_PROPIERTIES,
   CITY_PROPIERTIES,
   SET_FILTERS,
   RESET_PROPIERTIES,
-  SET_TOKEN,
   LOGIN,
   REGISTER,
   LOGOUT
@@ -35,7 +33,7 @@ export const login = (user) => {
   return async (dispatch) => {
     try {
       console.log("user: ",user )
-      const apiResult = await $.ajax({
+      await $.ajax({
         url: "http://localhost:8100/api/login",
         type: "POST",
         contentType: "application/json",
@@ -55,7 +53,7 @@ export const login = (user) => {
 export const register = (newUser) => {
   return async (dispatch) => {
     try {
-      const apiResult = await $.ajax({
+      await $.ajax({
         url: "http://localhost:8100/api/register",
         type: "POST",
         contentType: "application/json; charset=utf-8",
@@ -76,10 +74,10 @@ export const getPropierties = () => {
  
   return async (dispatch) => {
     try {
-      const apiResult = await $.ajax({
+      await $.ajax({
         url: "http://localhost:8100/api/properties",
         type: "GET",
-         headers:{'Authorization': `Bearer 20|B7i8AOsjPSrYyprJeGIt0l8rmdb4SJsadvs8e9DW`},
+         headers:{'Authorization': `Bearer ${localStorage.getItem("token")}`},
         success: (res) => {
           console.log("this is my res",res)
           dispatch({ type: GET_PROPIERTIES, payload: res.data });

@@ -23,7 +23,6 @@ export default function InputText() {
     url: "http://localhost:8100/api/properties",
     type: "GET",
     headers: { Authorization: `Bearer ${token}` },
-    type: "GET",
     success: (res) => {
       res.data.map((item) => {
         var find = cities.indexOf(item.city) > -1;
@@ -67,7 +66,7 @@ export default function InputText() {
           )}
         />
       </form>
-      {citySearched.length == 0 ? (
+      {citySearched.length === 0 ? (
         <p></p>
       ) : (
         <NavLink exact to="/propierties" style={{ textDecoration: "none" }}>
