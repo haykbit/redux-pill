@@ -22,17 +22,17 @@ export default function FilterForm() {
     dispatch(filterPropierties(filterQuery));
   };
 
-  useEffect(() => {
-    if (doFilters) {
-      HandleFilterPropierties();
-    }
-  }, [stateFilters]);
+  // useEffect(() => {
+  //   if (doFilters) {
+  //     HandleFilterPropierties();
+  //   }
+  // }, [stateFilters]);
 
   const handleChange = (e) => {
     dispatch(
       set_filters({
         ...value,
-        [e.target.name]: e.target.value,
+        [e.target.name]:e.target.value,
       })
     );
     setdoFilters(true);

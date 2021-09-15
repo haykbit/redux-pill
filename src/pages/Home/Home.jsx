@@ -26,10 +26,18 @@ function Home() {
     dispatch(getPropierties());
   }, []);
 
-  const state = useSelector((state) => state.reducer);
+  const state = useSelector((state) => state.reducer.value);
+   console.log("estado",state);
 
   return (
-    <>
+    
+   <>
+    {state.length== 0 ?(
+    <p>loading...</p>
+    ):(
+   
+    
+    
       <div className={classes.root}>
         <Navbar />
         <Grid container className={classes.cover}>
@@ -65,18 +73,18 @@ function Home() {
                 </Button>
               </NavLink>
 
-              {state.value.length == 0 ? (
+              {state.length == 0 ? (
                 <CircularProgress />
               ) : (
                 <Grid Item className={classes.containerPop}>
                   <CardMedia
                     className={classes.item}
-                    image={state.value[2].image}
+                    image={state[0].city}
                     title="Contemplative Reptile"
                   />
                   <CardMedia
                     className={classes.item}
-                    image={state.value[3].image}
+                    image={state[1].city}
                     title="Contemplative Reptile"
                   />
                 </Grid>
@@ -95,18 +103,18 @@ function Home() {
                   View rentals
                 </Button>
               </NavLink>
-              {state.value.length == 0 ? (
+              {state.length == 0 ? (
                 <CircularProgress />
               ) : (
                 <Grid Item className={classes.containerPop}>
                   <CardMedia
                     className={classes.item}
-                    image={state.value[0].image}
+                    image={state[0].city}
                     title="Contemplative Reptile"
                   />
                   <CardMedia
                     className={classes.item}
-                    image={state.value[1].image}
+                    image={state[1].city}
                     title="Contemplative Reptile"
                   />
                 </Grid>
@@ -115,6 +123,7 @@ function Home() {
           </Grid>
         </Grid>
       </div>
+      )}
     </>
   );
 }

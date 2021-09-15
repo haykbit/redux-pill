@@ -27,9 +27,9 @@ const Dashboard = () => {
   const history = useHistory();
   const state = useSelector((state) => state.reducer);
 
-  useEffect(() => {
-    dispatch(getPropierties());
-  }, [state]);
+  // useEffect(() => {
+  //   dispatch(getPropierties());
+  // }, [state]);
 
   console.log("DASHBOARD STATE: ", state.value);
 

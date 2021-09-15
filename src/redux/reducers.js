@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import {reducer, FilterReducer } from './counter/reducer';
+import {reducer, FilterReducer,sessionReducer } from './counter/reducer';
 
 const reducers = combineReducers({
-  reducer,FilterReducer
+  reducer,FilterReducer,sessionReducer
 });
 
 export default reducers;
