@@ -109,7 +109,10 @@ const Dashboard = () => {
       <Navbar />
       <div style={{ height: 400, width: "100%", marginTop: "100px" }}>
         {state.value.length === 0 ? (
-          <LinearProgress />
+          <>
+            <LinearProgress />
+            <h2>No data colected</h2>
+          </>
         ) : (
           <DataGrid rows={rows} columns={columns} disableSelectionOnClick />
         )}

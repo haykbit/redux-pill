@@ -32,7 +32,7 @@ function Home() {
   return (
     <>
       {state.length == 0 ? (
-        <p>loading...</p>
+        <CircularProgress />
       ) : (
         <div className={classes.root}>
           <Navbar />

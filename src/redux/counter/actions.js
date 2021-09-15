@@ -142,7 +142,7 @@ export const getPropiertiesOffer = (offer) => {
   return async (dispatch) => {
     try {
       await $.ajax({
-        url: `http://localhost:3000/properties?offer=${offer}`,
+        url: `http://localhost:8100/api/properties?offer=${offer}`,
         type: "GET",
         success: (res) => {
           dispatch({ type: CITY_PROPIERTIES, payload: res });
