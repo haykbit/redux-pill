@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
@@ -7,7 +7,7 @@ import {
   Button,
   Typography,
   CardMedia,
-  CircularProgress,
+  LinearProgress,
 } from "@material-ui/core";
 import useStyles from "./style";
 import InputSearch from "../../components/Search/SearcherInput";
@@ -32,12 +32,6 @@ function Home() {
   return (
     
    <>
-    {state.length== 0 ?(
-    <p>loading...</p>
-    ):(
-   
-    
-    
       <div className={classes.root}>
         <Navbar />
         <Grid container className={classes.cover}>
@@ -73,18 +67,18 @@ function Home() {
                 </Button>
               </NavLink>
 
-              {state.length == 0 ? (
-                <CircularProgress />
+              {state.length === 0 ? (
+                <LinearProgress />
               ) : (
                 <Grid Item className={classes.containerPop}>
                   <CardMedia
                     className={classes.item}
-                    image={state[0].city}
+                    image={state[0].image}
                     title="Contemplative Reptile"
                   />
                   <CardMedia
                     className={classes.item}
-                    image={state[1].city}
+                    image={state[1].image}
                     title="Contemplative Reptile"
                   />
                 </Grid>
@@ -103,18 +97,18 @@ function Home() {
                   View rentals
                 </Button>
               </NavLink>
-              {state.length == 0 ? (
-                <CircularProgress />
+              {state.length === 0 ? (
+                <LinearProgress />
               ) : (
                 <Grid Item className={classes.containerPop}>
                   <CardMedia
                     className={classes.item}
-                    image={state[0].city}
+                    image={state[0].image}
                     title="Contemplative Reptile"
                   />
                   <CardMedia
                     className={classes.item}
-                    image={state[1].city}
+                    image={state[1].image}
                     title="Contemplative Reptile"
                   />
                 </Grid>
@@ -123,7 +117,6 @@ function Home() {
           </Grid>
         </Grid>
       </div>
-      )}
     </>
   );
 }

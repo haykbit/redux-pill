@@ -1,7 +1,7 @@
 import { RangeSlider, Select, Option } from "@ui5/webcomponents-react";
 import "./styles.css";
-import { useEffect, useState } from "react";
-import { set_filters, filterPropierties } from "../../redux/counter/actions";
+import { useState } from "react";
+import { set_filters } from "../../redux/counter/actions";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function FilterForm() {
@@ -9,30 +9,12 @@ export default function FilterForm() {
   const dispatch = useDispatch();
   const stateFilters = useSelector((state) => state.FilterReducer);
   const { value } = stateFilters;
-  const { bedroom, bathrooms, range, petsAllowed } = value;
-
-  // const [, cancel] = useDebounce(()=>
-  // {HandleFilterPropierties()},
-  // 2000,
-  // [values]
-  // );
-
-  const HandleFilterPropierties = () => {
-    let filterQuery = `price_gte=${range[0]}&price_lte=${range[1]}&room=${bedroom}&bath=${bathrooms}&pet=${petsAllowed}`;
-    dispatch(filterPropierties(filterQuery));
-  };
-
-  // useEffect(() => {
-  //   if (doFilters) {
-  //     HandleFilterPropierties();
-  //   }
-  // }, [stateFilters]);
 
   const handleChange = (e) => {
     dispatch(
       set_filters({
         ...value,
-        [e.target.name]:e.target.value,
+        [e.target.name]: e.target.value,
       })
     );
     setdoFilters(true);
