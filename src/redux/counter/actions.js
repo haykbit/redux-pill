@@ -18,17 +18,17 @@ import {
 const token=localStorage.getItem('token');
 export const logout = ()=>{
   
-  return async (dispatch)=>{
-    const apiResults =await $.ajax({
-      url:"http://localhost:8100/api/logout",
-      type:"POST",
-      success:(res)=>{
+   return (dispatch)=>{
+  //   const apiResults =await $.ajax({
+  //     url:"http://localhost:8100/api/logout",
+  //     type:"POST",
+  //     success:(res)=>{
 
-        console.log("log res",res)
+  //       console.log("log res",res)
         dispatch({type:LOGOUT, playload:0})
       }
-    });
-  }
+  //   });
+  // }
 }
 
 export const login = (user) => {
