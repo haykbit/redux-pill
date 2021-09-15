@@ -16,7 +16,7 @@ export default function Logout() {
       <p>hope to see you soon</p>
       <button
         onClick={() => {
-          localStorage.removeItem("tokken");
+          localStorage.removeItem("token");
           dispatch(logout());
           history.push("/");
         }}

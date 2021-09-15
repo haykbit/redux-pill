@@ -3,6 +3,7 @@ import { Redirect } from "react-router";
 import { login } from "../../redux/counter/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import "./index.css";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -24,31 +25,36 @@ export default function Login() {
 
   return (
     <>
-      {sessionState == 0 ? (
-        <form onSubmit={sendData}>
-          <label>
-            <input
-              onChange={handleSubmit}
-              defaultValue=""
-              name="email"
-              type="text"
-            />
-          </label>
+      <div className="divLogin">
+        {sessionState == 0 ? (
+          <form onSubmit={sendData} className="formLogin">
+            <h1>Login Form</h1>
+            <label>
+              <p>Email</p>
+              <input
+                onChange={handleSubmit}
+                defaultValue=""
+                name="email"
+                type="text"
+              />
+            </label>
 
-          <label>
-            <input
-              onChange={handleSubmit}
-              defaultValue=""
-              name="password"
-              type="text"
-            />
-          </label>
+            <label>
+              <p>Password</p>
+              <input
+                onChange={handleSubmit}
+                defaultValue=""
+                name="password"
+                type="password"
+              />
+            </label>
 
-          <button type="submit">send</button>
-        </form>
-      ) : (
-        <Redirect to={"./"} />
-      )}
+            <button type="submit">Login</button>
+          </form>
+        ) : (
+          <Redirect to={"./"} />
+        )}
+      </div>
     </>
   );
 }

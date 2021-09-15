@@ -1,0 +1,43 @@
+.divLogin {
+  display: flex;
+  justify-content: center;
+}
+
+.formLogin {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(245, 245, 245);
+  padding: 5%;
+  border-radius: 5px;
+}
+
+.formLogin input {
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 230px;
+  border: 1px solid rgb(233, 232, 232);
+  border-radius: 3px;
+}
+
+.formLogin button {
+  border: none;
+  border-radius: 2px;
+  height: 40px;
+  width: 30%;
+  margin-top: 10px;
+  justify-content: center;
+  align-self: flex-end;
+  font-size: 15px;
+  background-color: rgb(62, 1, 230);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.formLogin label p {
+  margin-top: 5px;
+}
+
+.formLogin h1 {
+  margin-bottom: 10%;
+}
