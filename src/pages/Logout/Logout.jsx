@@ -18,7 +18,7 @@ export default function Logout() {
         onClick={() => {
           localStorage.removeItem("tokken");
           dispatch(logout());
-          history.push("/");
+          history.push("/login");
         }}
       >
         Are you sure to logout?
