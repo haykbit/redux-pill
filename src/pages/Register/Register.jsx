@@ -1,5 +1,6 @@
 import { register } from "../../redux/counter/actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router";
 import { useState } from "react";
 import "./stylesR.css";
 import loginImg from "../../assets/Ho.gif";
@@ -7,66 +8,35 @@ import loginImg from "../../assets/Ho.gif";
 export default function Register() {
   const dispatch = useDispatch();
   const [newUserData, setNewUserData] = useState({});
+  const sessionState = useSelector((state) => state.sessionReducer.value);
   const handleSubmit = (e) => {
     setNewUserData({
       ...newUserData,
       [e.target.name]: e.target.value,
     });
   };
+
   const sendData = (event) => {
     event.preventDefault();
     dispatch(register(newUserData));
+    
   };
+
+
   return (
     <>
-    {/* <form onSubmit={sendData}>
-      <label>
-        <input
-          onChange={handleSubmit}
-          defaultValue=""
-          name="email"
-          type="text"
-        />
-      </label>
-
-      <label>
-        <input
-          onChange={handleSubmit}
-          defaultValue=""
-          name="name"
-          type="text"
-        />
-      </label>
-
-      <label>
-        <input
-          onChange={handleSubmit}
-          defaultValue=""
-          name="password"
-          type="text"
-        />
-      </label>
-
-      <label>
-        <input
-          onChange={handleSubmit}
-          defaultValue=""
-          name="confirm_password"
-          type="text"
-        />
-      </label>
-      <button type="submit">send</button>
-    </form> */}
+    {sessionState === 0 ? (
+    <>
      <div className="box"> 
-     <h1 className="h3 mb-3 fw-normal">Please sign up</h1>
-     <img
-                  className="img"
-                  src={loginImg}
-                  alt=""
-                  width="50%"
-                  height="200px"
-                />
-    <form className="registerForm" onSubmit={sendData}>
+        <h1 className="h3 mb-3 fw-normal">Please sign up</h1>
+        <img
+                    className="img"
+                    src={loginImg}
+                    alt=""
+                    width="50%"
+                    height="200px"
+                  />
+        <form className="registerForm" onSubmit={sendData}>
      
         <div className="field">
           <input 
@@ -125,9 +95,13 @@ export default function Register() {
         </div>
         <button className="w-100 btn btn-lg btn-outline-warning" type="submit" >singUp</button>
    
-  </form>
+      </form>
    </div> 
-  
+    </>
+    ):(
+     
+      <Redirect to={"/"} />
+    )}
     </>
   );
 }
