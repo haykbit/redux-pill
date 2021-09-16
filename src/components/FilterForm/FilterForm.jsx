@@ -68,7 +68,7 @@ export default function FilterForm() {
   return (
     <form className="filters_form">
       <div>
-        <h4>Type house</h4>
+        <h5>Type house</h5>
         <div className="typeHouse">
           <div>
             <input
@@ -114,7 +114,7 @@ export default function FilterForm() {
       </div>
 
       <div>
-        <h4>Bedrooms</h4>
+        <h5>Bedrooms</h5>
         <div className="bedrooms">
           <label className="container">
             <input
@@ -174,7 +174,7 @@ export default function FilterForm() {
       </div>
 
       <div>
-        <h4>Bathrooms</h4>
+        <h5>Bathrooms</h5>
         <div className="bathrooms">
           <label className="container">
             <input
@@ -211,7 +211,7 @@ export default function FilterForm() {
         </div>
       </div>
       <div>
-        <h4>Equip</h4>
+        <h5>Equip</h5>
         <Select onChange={onChangeEquipment}>
           <Option>Equipment 1</Option>
           <Option>Equipment 2</Option>
@@ -220,7 +220,7 @@ export default function FilterForm() {
         </Select>
       </div>
       <div>
-        <h4>State</h4>
+        <h5>State</h5>
         <div className="houseState">
           <div>
             <input
@@ -256,7 +256,7 @@ export default function FilterForm() {
       </div>
 
       <div>
-        <h4>Price Range</h4>
+        <h5>Price Range</h5>
         <RangeSlider
           endValue="150000"
           startValue="500"
@@ -268,7 +268,7 @@ export default function FilterForm() {
         />
       </div>
       <div>
-        <h4>Price Range</h4>
+        <h5>Price Range</h5>
         <Select onChange={onChangeHours}>
           <Option>last 48 hours</Option>
           <Option>last 36 hours</Option>
@@ -277,7 +277,7 @@ export default function FilterForm() {
         </Select>
       </div>
       <div>
-        <h4>More Filters</h4>
+        <h5>More Filters</h5>
         <div className="moreFilters">
           <div>
             <input

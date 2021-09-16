@@ -17,10 +17,11 @@ import Navbar from "../../components/Navbar/Navbar";
 const Dashboard = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.reducer);
-  const [render, setRender]= useState(false)
+  const [render, setRender]= useState()
   
   useEffect(() => {
     dispatch(getPropierties());
+    setRender(false);
   }, [render]);
 
   console.log("DASHBOARD STATE: ", state.value);

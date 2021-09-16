@@ -54,22 +54,22 @@ function Home() {
 
           <Grid item className={classes.bottomSection}>
             <Grid Item className={classes.popular}>
-              <NavLink exact to="/dashboard" style={{ textDecoration: "none" }}>
-                <Button
-                  className={classes.offerButton}
-                  variant="contained"
-                  color="primary"
-                  onClick={() => {
-                    dispatch(getPropiertiesOffer("Sell"));
-                  }}
-                >
-                  View sales
-                </Button>
-              </NavLink>
-
               {state.length === 0 ? (
-                <LinearProgress />
+                <span></span>
               ) : (
+                <>
+                <NavLink exact to="/propierties" style={{ textDecoration: "none" }}>
+                  <Button
+                    className={classes.offerButton}
+                    variant="contained"
+                    color="primary"
+                    onClick={() => {
+                      dispatch(getPropiertiesOffer("Sell"));
+                    }}
+                  >
+                    View sales
+                  </Button>
+                </NavLink>
                 <Grid Item className={classes.containerPop}>
                   <CardMedia
                     className={classes.item}
@@ -82,10 +82,15 @@ function Home() {
                     title="Contemplative Reptile"
                   />
                 </Grid>
+                </>
               )}
             </Grid>
             <Grid Item className={classes.popular}>
-              <NavLink exact to="/dashboard" style={{ textDecoration: "none" }}>
+              {state.length === 0 ? (
+                <span></span>
+              ) : (
+                <>
+                <NavLink exact to="/propierties" style={{ textDecoration: "none" }}>
                 <Button
                   className={classes.offerButton}
                   variant="contained"
@@ -97,9 +102,6 @@ function Home() {
                   View rentals
                 </Button>
               </NavLink>
-              {state.length === 0 ? (
-                <LinearProgress />
-              ) : (
                 <Grid Item className={classes.containerPop}>
                   <CardMedia
                     className={classes.item}
@@ -112,6 +114,7 @@ function Home() {
                     title="Contemplative Reptile"
                   />
                 </Grid>
+                </>
               )}
             </Grid>
           </Grid>

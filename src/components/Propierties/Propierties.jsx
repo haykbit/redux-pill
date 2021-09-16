@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 
 import { Grid, Button, Typography, Paper, ButtonBase } from "@material-ui/core";
 import KingBedIcon from "@material-ui/icons/KingBed";
@@ -11,20 +11,11 @@ import InputText from "../Search/SearcherInput";
 import FilterForm from "../FilterForm/FilterForm";
 import Navbar from "../../components/Navbar/Navbar";
 
-import { resetPropierties } from "../../redux/counter/actions";
-
 const CounterControls = () => {
-  const dispatch = useDispatch();
-  const history = useHistory();
   const classes = useStyles();
 
   const state = useSelector((state) => state.reducer);
   const stateFilters = useSelector((state) => state.FilterReducer);
-
-  const HandleGetPropierties = () => {
-    dispatch(resetPropierties());
-    history.push("/");
-  };
 
   return (
     <div className={classes.root}>
@@ -39,14 +30,15 @@ const CounterControls = () => {
         <Grid item className={classes.toolbar}>
           <FilterForm />
         </Grid>
+        <NavLink exact to="/" style={{ textDecoration: "none" }}>
         <Button
           variant="contained"
           color="secondary"
-          onClick={HandleGetPropierties}
           className={classes.back}
         >
           Back
         </Button>
+        </NavLink>
       </Grid>
 
       {state.value === 0 ? (
@@ -57,12 +49,6 @@ const CounterControls = () => {
         </div>
       ) : (
         <>
-          {stateFilters.value === 0 ? (
-            <h1>No data colected</h1>
-          ) : (
-            <p>{stateFilters.value.typeHouse}</p>
-          )}
-
           <Grid container className={classes.listContainer}>
             {state.value.map(
               ({
