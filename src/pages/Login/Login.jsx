@@ -50,6 +50,7 @@ export default function Login() {
                     name="email"
                     placeholder="Email"
                   />
+                  
                 </div>
                 <div className="form-floating">
                   <input
@@ -80,28 +81,7 @@ export default function Login() {
               </form>
             </main>
           </div>
-          {/* <form onSubmit={sendData}>
-             <label>
-             <input 
-             onChange={handleSubmit}
-             defaultValue=""
-             name="email"
-             type="text" 
-              />
-             </label>
-     
-             <label>
-             <input 
-             onChange={handleSubmit}
-             defaultValue=""
-             name="password"
-             type="text"  
-             />
-             </label>
-          
-           <button type="submit">send</button>
          
-         </form>*/}
         </>
       ) : (
         <Redirect to={"./"} />
