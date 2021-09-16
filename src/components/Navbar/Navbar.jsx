@@ -36,11 +36,11 @@ function Navbar() {
                     style={{ textDecoration: "none" }}
                   >
                     <Button className={classes.links} color="primary">
-                      Propieties
+                      Propierties
                     </Button>
                   </NavLink>
                   {sessionState === 0 ? (
-                    <p>login to admin</p>
+                    <span></span>
                   ) : (
                     <NavLink
                       exact
@@ -53,20 +53,7 @@ function Navbar() {
                       </Button>
                     </NavLink>
                   )}
-                  <NavLink
-                    exact
-                    to="/register"
-                    style={{ textDecoration: "none" }}
-                    className={classes.login}
-                  >
-                    <Button
-                      className={classes.links}
-                      variant="endIcon"
-                      color="default"
-                    >
-                      REGISTER
-                    </Button>
-                  </NavLink>
+
                   {sessionState === 0 ? (
                     <NavLink
                       exact
@@ -76,8 +63,7 @@ function Navbar() {
                     >
                       <Button
                         className={classes.links}
-                        variant="endIcon"
-                        color="default"
+                        variant="outlined" color="secondary"
                       >
                         LOGIN
                       </Button>

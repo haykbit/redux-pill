@@ -32,7 +32,6 @@ export default makeStyles(() => ({
   },
   toolbar: {
     width: "100%",
-    height: "200px",
     marginBottom: "40px !important",
     marginTop: "20px",
   },

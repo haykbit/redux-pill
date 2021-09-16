@@ -18,9 +18,8 @@ export default makeStyles(() => ({
     link: {
         display: "flex",
         alignItems: "center",
-        marginLeft: "30px"
     },
     login: {
-        marginLeft: "40px"
+        marginLeft: "20px"
     },
   }));
