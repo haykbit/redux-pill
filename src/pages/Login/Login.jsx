@@ -50,6 +50,7 @@ export default function Login() {
                     name="email"
                     placeholder="Email"
                   />
+                  
                 </div>
                 <div className="form-floating">
                   <input
