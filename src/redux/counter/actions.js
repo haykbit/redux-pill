@@ -57,8 +57,8 @@ export const register = (newUser) => {
         data: JSON.stringify(newUser),
         success: (res) => {
           console.log(res);
-          dispatch({ type: REGISTER, payload: res.data });
           localStorage.setItem("token", res.data.token);
+          dispatch({ type: REGISTER, payload: res.data });
         },
       });
     } catch (error) {
