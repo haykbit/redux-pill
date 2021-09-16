@@ -85,6 +85,26 @@ export const getPropierties = () => {
   };
 };
 
+export const updatePropierties = (id, updated, state) => {
+  return async (dispatch) => {
+    try {
+      await $.ajax({
+        url: `http://localhost:8100/api/properties/${id}`,
+        type: "PUT",
+        contentType: "application/json; charset=utf-8",
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        data: JSON.stringify(updated),
+        success: (res) => {
+          console.log("UPDATE REESPONSE: ", res.data);
+          dispatch({ type: GET_PROPIERTIES, payload: state });
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
 export const deletPropierties = (id, state) => {
   return async (dispatch) => {
     try {

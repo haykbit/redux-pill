@@ -3,37 +3,31 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./index.css";
 import { DataGrid } from "@material-ui/data-grid";
-import {
-  LinearProgress,
-  IconButton,
-} from "@material-ui/core";
+import { LinearProgress, IconButton } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/DeleteOutlined";
+import SaveIcon from '@material-ui/icons/Save';
 import {
   getPropierties,
   deletPropierties,
+  updatePropierties,
 } from "../../redux/counter/actions";
 import Navbar from "../../components/Navbar/Navbar";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.reducer);
-  const [render, setRender]= useState()
-  
+  const [updateData, setUpdate] = useState([]);
+  const [render, setRender] = useState();
+
   useEffect(() => {
     dispatch(getPropierties());
     setRender(false);
   }, [render]);
 
-  console.log("DASHBOARD STATE: ", state.value);
+  //console.log("DASHBOARD STATE: ", state.value);
 
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
-    /*{
-      field: "i",
-      headerName: "Propiertie",
-      width: 150,
-      editable: true,
-    },*/
     {
       field: "street",
       headerName: "Street",
@@ -97,6 +91,47 @@ const Dashboard = () => {
       disableColumnMenu: true,
       disableReorder: true,
     },
+    {
+      field: "action",
+      headerName: "Update",
+      renderCell: function IconToolbar(props) {
+        const { id, street, size, room, bath, price } = props.row;
+        console.log(props);
+
+        const update = () => {
+          let propiertie = {
+            street: street,
+            room: room,
+            bath: bath,
+            size: size,
+            price: price,
+          }
+          console.log(propiertie);
+          dispatch(updatePropierties(id, propiertie, state.value ));
+        };
+
+        return (
+          <div>
+            <Link to="/dashboard" onClick={() => {}}>
+              <IconButton
+                color="inherit"
+                size="small"
+                aria-label="delete"
+                onClick={update}
+              >
+                <SaveIcon fontSize="small" />
+              </IconButton>
+            </Link>
+          </div>
+        );
+      },
+      sortable: false,
+      width: 100,
+      filterable: false,
+      align: "center",
+      disableColumnMenu: true,
+      disableReorder: true,
+    },
   ];
 
   const rows = state.value;
@@ -108,7 +143,13 @@ const Dashboard = () => {
         {state.value.length === 0 ? (
           <LinearProgress />
         ) : (
-          <DataGrid rows={rows} columns={columns} disableSelectionOnClick />
+          <>
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            {...updateData}
+          />
+          </>
         )}
       </div>
     </>

@@ -5,7 +5,6 @@ import { login } from "../../redux/counter/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Button } from "@material-ui/core";
 import loginImg from "../../assets/Ho.gif";
 
 export default function Login() {
